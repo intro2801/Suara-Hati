@@ -12,6 +12,9 @@ import {
 import { db } from "./firebase";
 import ReplyModal from "./ReplyModal";
 
+import letterClosed from "./assets/letter-closed.png";
+import letterOpen from "./assets/letter-open.png";
+
 function Letters({ user, profile }) {
   const [letters, setLetters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -299,16 +302,38 @@ useEffect(() => {
               }
             >
               {openedLetterId === letter.id ? (
-                <>
-                   <p>{letter.message}</p>
-                   <span className="letter-hint">Tap to close</span>
-                </>
-              ) : (
+                <div className="opened-letter">
+                  <div className="letter-open-stage">
+
+                    <div className="letter-message-paper">
+                      <p>{letter.message}</p>
+                  </div>
+
+    <img
+      src={letterOpen}
+      alt="Opened letter"
+      className="letter-envelope-image open-envelope-image"
+    />
+
+  </div>
+
+  <span className="letter-hint">
+    Tap the letter to close
+  </span>
+</div>
+             ) : (
                <div className="closed-letter">
-               <div className="envelope-icon">✉️</div>
-               <span className="letter-hint">Tap the letter to open</span>
-             </div>
-         )}
+                 <img
+                   src={letterClosed}
+                   alt="Closed letter"
+                   className="letter-envelope-image"
+                 />
+
+                 <span className="letter-hint">
+                   Tap the letter to open
+                 </span>
+               </div>
+             )}
        </div>
 
 

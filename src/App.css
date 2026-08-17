@@ -959,3 +959,86 @@ footer {
   }
 
 }
+
+.letter-paper {
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.closed-letter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.letter-envelope-image {
+  width: 180px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.letter-paper.closed .letter-envelope-image {
+  transform: scale(1);
+}
+
+.letter-paper.closed:hover .letter-envelope-image {
+  transform: scale(1.04);
+}
+
+.letter-paper.opened .letter-envelope-image {
+  transform: scale(1.08);
+}
+
+.letter-paper.opened p {
+  margin-top: 14px;
+  animation: letterMessageReveal 0.45s ease forwards;
+}
+
+.letter-hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+@keyframes letterMessageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.opened-letter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.opened-letter-message {
+  width: 90%;
+  max-width: 420px;
+  margin-top: 12px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  animation: letterMessageReveal 0.45s ease forwards;
+}
+
+.opened-letter-message p {
+  margin: 0;
+  line-height: 1.6;
+}
