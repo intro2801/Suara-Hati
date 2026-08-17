@@ -1,6 +1,8 @@
+import "./Auth.css";
 import { useState } from "react";
-import { auth, db } from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
+
+import { db } from "../firebase";
 
 function Profile({ user, onComplete }) {
   const [username, setUsername] = useState("");
@@ -31,12 +33,12 @@ function Profile({ user, onComplete }) {
         email: user.email,
         role: "user",
         status: "active",
-        createdAt: new Date()
+        createdAt: new Date(),
       });
 
       onComplete();
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error("PROFILE CREATE ERROR:", err.code, err.message);
       setError("We couldn't create your profile. Please try again.");
     }
 
@@ -45,21 +47,14 @@ function Profile({ user, onComplete }) {
 
   return (
     <div className="auth-page">
-
       <div className="auth-card">
-
-        <div className="auth-logo">
-          🌙
-        </div>
+        <div className="auth-logo">🌙</div>
 
         <h1>Welcome to Suara Hati</h1>
 
-        <p className="auth-description">
-          Before you enter, choose a username.
-        </p>
+        <p className="auth-description">Before you enter, choose a username.</p>
 
         <form onSubmit={handleCreateProfile}>
-
           <label>Username</label>
 
           <input
@@ -72,35 +67,17 @@ function Profile({ user, onComplete }) {
             required
           />
 
-          <p
-            style={{
-              color: "#777f91",
-              fontSize: "13px",
-              marginBottom: "18px"
-            }}
-          >
-            This is the name people will see when you choose to
-            show your identity.
+          <p className="profile-hint">
+            This is the name people will see when you choose to show your identity.
           </p>
 
-          {error && (
-            <div className="auth-error">
-              {error}
-            </div>
-          )}
+          {error && <div className="auth-error">{error}</div>}
 
-          <button
-            className="auth-submit"
-            type="submit"
-            disabled={loading}
-          >
+          <button className="auth-submit" type="submit" disabled={loading}>
             {loading ? "Creating profile..." : "Continue"}
           </button>
-
         </form>
-
       </div>
-
     </div>
   );
 }

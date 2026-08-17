@@ -1,12 +1,8 @@
+import "./Modals.css";
 import { useState } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-import {
-  addDoc,
-  collection,
-  serverTimestamp
-} from "firebase/firestore";
-
-import { db } from "./firebase";
+import { db } from "../../firebase";
 
 function ReplyModal({ letter, user, profile, onClose }) {
   const [message, setMessage] = useState("");
@@ -35,32 +31,20 @@ function ReplyModal({ letter, user, profile, onClose }) {
     setError("");
 
     try {
-      await addDoc(
-        collection(db, "letterReplies"),
-        {
-          letterId: letter.id,
-
-          senderId: user.uid,
-          senderUsername: profile.username,
-
-          receiverId: letter.senderId,
-
-          message: cleanMessage,
-
-          createdAt: serverTimestamp()
-        }
-      );
+      await addDoc(collection(db, "letterReplies"), {
+        letterId: letter.id,
+        senderId: user.uid,
+        senderUsername: profile.username,
+        receiverId: letter.senderId,
+        message: cleanMessage,
+        createdAt: serverTimestamp(),
+      });
 
       alert("💬 Your reply has been sent.");
-
       onClose();
-
-    } catch (error) {
-      console.error("REPLY ERROR:", error);
-
-      setError(
-        "We couldn't send your reply."
-      );
+    } catch (err) {
+      console.error("REPLY ERROR:", err.code, err.message);
+      setError("We couldn't send your reply.");
     }
 
     setSending(false);
@@ -68,59 +52,31 @@ function ReplyModal({ letter, user, profile, onClose }) {
 
   return (
     <div className="modal-overlay">
-
       <div className="report-modal">
-
         <h2>💬 Reply to @{letter.senderUsername}</h2>
-
-        <p>
-          Send a kind reply to this care letter.
-        </p>
+        <p>Send a kind reply to this care letter.</p>
 
         <label>Your reply</label>
-
         <textarea
           value={message}
-          onChange={(event) =>
-            setMessage(event.target.value)
-          }
+          onChange={(event) => setMessage(event.target.value)}
           placeholder="Thank you. I really needed this today..."
           maxLength={500}
         />
 
-        <div className="character-count">
-          {message.length}/500
-        </div>
+        <div className="character-count">{message.length}/500</div>
 
-        {error && (
-          <div className="auth-error">
-            {error}
-          </div>
-        )}
+        {error && <div className="auth-error">{error}</div>}
 
         <div className="modal-actions">
-
-          <button
-            className="cancel-button"
-            onClick={onClose}
-          >
+          <button className="cancel-button" onClick={onClose}>
             Cancel
           </button>
-
-          <button
-            className="report-submit-button"
-            onClick={handleReply}
-            disabled={sending}
-          >
-            {sending
-              ? "Sending..."
-              : "💬 Send Reply"}
+          <button className="report-submit-button" onClick={handleReply} disabled={sending}>
+            {sending ? "Sending..." : "💬 Send Reply"}
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
 }

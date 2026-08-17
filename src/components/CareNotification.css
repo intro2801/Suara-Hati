@@ -1,0 +1,112 @@
+.care-toast-stack {
+  position: fixed;
+  top: 90px;
+  right: 24px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  width: calc(100% - 48px);
+}
+
+.care-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: care-toast-in 0.25s ease;
+}
+
+@keyframes care-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.care-toast-seal {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(231, 183, 95, 0.4);
+}
+
+.care-toast-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.care-toast-body strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold-strong);
+  margin-bottom: 6px;
+}
+
+.care-toast-body p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.care-toast-view {
+  background: var(--gold-soft);
+  color: var(--gold-strong);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.care-toast-view:hover {
+  background: var(--gold);
+  color: #2a1e08;
+}
+
+.care-toast-close {
+  background: none;
+  color: var(--text-faint);
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.care-toast-close:hover {
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .care-toast-stack {
+    top: auto;
+    bottom: 20px;
+    right: 12px;
+    left: 12px;
+    max-width: none;
+    width: auto;
+  }
+}

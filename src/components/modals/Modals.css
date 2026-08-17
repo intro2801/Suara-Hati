@@ -1,0 +1,92 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 22, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.report-modal {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-lg);
+}
+
+.report-modal h2 {
+  font-family: var(--font-display);
+  margin-bottom: 8px;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.report-modal > p {
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.report-modal label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.report-modal select,
+.report-modal textarea {
+  width: 100%;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+}
+
+.report-modal textarea {
+  min-height: 100px;
+  height: auto;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.cancel-button {
+  background: var(--bg-surface-raised);
+  color: var(--text-primary);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.report-submit-button {
+  background: var(--rose);
+  color: #2a1210;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.report-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
