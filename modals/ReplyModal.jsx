@@ -6,33 +6,28 @@ import {
   serverTimestamp
 } from "firebase/firestore";
 
-import { db } from "./firebase";
+import { db } from "../src/firebase";
 
-function CareModal({ post, user, profile, onClose }) {
+function ReplyModal({ letter, user, profile, onClose }) {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSendCare = async () => {
+  const handleReply = async () => {
     const cleanMessage = message.trim();
 
     if (!cleanMessage) {
-      setError("Please write something first.");
+      setError("Please write a reply first.");
       return;
     }
 
-    if (cleanMessage.length < 3) {
-      setError("Your letter is too short.");
+    if (cleanMessage.length < 2) {
+      setError("Your reply is too short.");
       return;
     }
 
     if (cleanMessage.length > 500) {
-      setError("Your letter cannot be longer than 500 characters.");
-      return;
-    }
-
-    if (post.authorId === user.uid) {
-      setError("You cannot send a care letter to yourself.");
+      setError("Your reply cannot be longer than 500 characters.");
       return;
     }
 
@@ -41,30 +36,32 @@ function CareModal({ post, user, profile, onClose }) {
 
     try {
       await addDoc(
-        collection(db, "letters"),
-        {
-           senderId: user.uid,
-           senderUsername: profile.username,
+  collection(db, "letterReplies"),
+  {
+    letterId: letter.id,
 
-           receiverId: post.authorId,
-           postId: post.id,
+    senderId: user.uid,
+    senderUsername: profile.username,
 
-           message: cleanMessage,
+    receiverId: letter.senderId,
 
-           status: "sent",
-           createdAt: serverTimestamp()
-        }
-      );
+    message: cleanMessage,
 
-      alert("💌 Your care letter has been sent.");
+    status: "pending",
+
+    createdAt: serverTimestamp()
+  }
+);
+
+      alert("💬 Your reply has been sent.");
 
       onClose();
 
     } catch (error) {
-      console.error("LETTER ERROR:", error);
+      console.error("REPLY ERROR:", error);
 
       setError(
-        "We couldn't send your letter."
+        "We couldn't send your reply."
       );
     }
 
@@ -76,22 +73,20 @@ function CareModal({ post, user, profile, onClose }) {
 
       <div className="report-modal">
 
-        <h2>💌 Send a Little Care</h2>
+        <h2>💬 Reply to @{letter.senderUsername}</h2>
 
         <p>
-          Send a kind message to the person who shared this thought.
+          Send a kind reply to this care letter.
         </p>
 
-        <label>
-          Your letter
-        </label>
+        <label>Your reply</label>
 
         <textarea
           value={message}
           onChange={(event) =>
             setMessage(event.target.value)
           }
-          placeholder="I hope tomorrow feels a little easier for you..."
+          placeholder="Thank you. I really needed this today..."
           maxLength={500}
         />
 
@@ -116,12 +111,12 @@ function CareModal({ post, user, profile, onClose }) {
 
           <button
             className="report-submit-button"
-            onClick={handleSendCare}
+            onClick={handleReply}
             disabled={sending}
           >
             {sending
               ? "Sending..."
-              : "💌 Send Letter"}
+              : "💬 Send Reply"}
           </button>
 
         </div>
@@ -132,4 +127,4 @@ function CareModal({ post, user, profile, onClose }) {
   );
 }
 
-export default CareModal;
+export default ReplyModal;

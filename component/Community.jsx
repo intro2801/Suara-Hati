@@ -9,12 +9,13 @@ import {
   orderBy,
   query,
   serverTimestamp,
+  setDoc,
   where
 } from "firebase/firestore";
 
-import { db } from "./firebase";
-import ReportModal from "./ReportModal";
-import CareModal from "./CareModal";
+import { db } from "../src/firebase";
+import ReportModal from "../modals/ReportModal";
+import CareModal from "../modals/CareModal";
 
 function Community({ user, profile }) {
   const [thought, setThought] = useState("");
@@ -39,7 +40,16 @@ function Community({ user, profile }) {
         const postList = snapshot.docs.map((post) => ({
           id: post.id,
           ...post.data()
-        }));
+        }))
+        .filter(
+          (post) => !blockedUsers.includes(post.authorId)
+        )
+        .sort((a, b) => { 
+          const aTime = a.createdAt?.toMillis?.() || 0;
+          const bTime = b.createdAt?.toMillis?.() || 0;
+
+        return bTime - aTime;
+      });
 
         setPosts(postList);
         setLoading(false);
@@ -58,7 +68,7 @@ function Community({ user, profile }) {
     );
 
     return () => unsubscribe();
-  }, []);
+  }, [blockedUsers]);
 
   // ==========================================
 // LOAD BLOCKED USERS
@@ -171,12 +181,14 @@ const handleBlock = async (post) => {
   }
 
   try {
+    const blockId = `${user.uid}_${post.authorId}`;
 
-    await addDoc(
-      collection(db, "blocks"),
+    await setDoc(
+      doc(db, "blocks", blockId),
       {
         blockerId: user.uid,
         blockedUserId: post.authorId,
+        blockedUsername: post.authorUsername || "Anonymous",
         createdAt: serverTimestamp()
       }
     );
@@ -271,7 +283,7 @@ const handleBlock = async (post) => {
             onClick={handlePost}
             disabled={posting}
           >
-            {posting ? "Posting..." : "Post Anonymously"}
+            {posting ? "Posting..." : "Post Thought"}
           </button>
 
         </div>
@@ -323,7 +335,7 @@ const handleBlock = async (post) => {
               <div className="post-header">
 
                 <div className="anonymous-user">
-                  🌙 Anonymous
+                  🌙 {post.authorUsername || "User"}
                 </div>
 
                 <div className="post-date">

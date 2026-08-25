@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import { auth } from "./firebase";
+import { auth } from "../src/firebase";
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);

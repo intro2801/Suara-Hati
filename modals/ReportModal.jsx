@@ -5,7 +5,7 @@ import {
   serverTimestamp
 } from "firebase/firestore";
 
-import { db } from "./firebase";
+import { db } from "../src/firebase";
 
 function ReportModal({ post, user, onClose }) {
   const [reason, setReason] = useState("");

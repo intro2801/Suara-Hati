@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  query,
+  where
+} from "firebase/firestore";
 
 import "./App.css";
-import Auth from "./Auth";
-import Profile from "./Profile";
-import Community from "./Community";
+
+import Auth from "../component/Auth";
+import Profile from "../component/Profile";
+import Community from "../component/Community";
+import Letters from "../component/Letters";
+
 import Admin from "./Admin";
-import Letters from "./Letters";
 
 import { auth, db } from "./firebase";
+
+import Warnings from "../component/Warnings";
 
 function App() {
 const [user, setUser] = useState(null);
@@ -18,6 +29,39 @@ const [isAdmin, setIsAdmin] = useState(false);
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState("");
 const [currentPage, setCurrentPage] = useState("community");
+const [isPageSwitching, setIsPageSwitching] = useState(false);
+const [unreadLetterCount, setUnreadLetterCount] = useState(0);
+
+const [theme, setTheme] = useState(() => {
+  return localStorage.getItem("suaraHatiTheme") || "aurora";
+});
+
+const [themeMenuOpen, setThemeMenuOpen] = useState(false);
+
+useEffect(() => {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("suaraHatiTheme", theme);
+}, [theme]);
+
+const changePage = (page) => {
+  if (page === currentPage || isPageSwitching) return;
+
+  setIsPageSwitching(true);
+
+  setTimeout(() => {
+    setCurrentPage(page);
+
+    setTimeout(() => {
+      setIsPageSwitching(false);
+    }, 50);
+  }, 350);
+};
+
+useEffect(() => {
+  if (isAdmin) {
+    setCurrentPage("admin");
+  }
+}, [isAdmin]);
 
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(
@@ -204,9 +248,74 @@ useEffect(() => {
     );
   }
 
+  // ==========================================
+// ACCOUNT STATUS
+// ==========================================
+
+if (profile.status === "banned") {
+  return (
+    <div className="account-restricted-page">
+
+      <div className="account-restricted-card">
+
+        <div className="restricted-icon">
+          🚫
+        </div>
+
+        <h1>Account Banned</h1>
+
+        <p>
+          Your Suara Hati account has been banned
+          because of a violation of our community rules.
+        </p>
+
+        <button
+          className="auth-submit"
+          onClick={() => signOut(auth)}
+        >
+          Log Out
+        </button>
+
+      </div>
+
+    </div>
+  );
+}
+
+
+if (profile.status === "suspended") {
+  return (
+    <div className="account-restricted-page">
+
+      <div className="account-restricted-card">
+
+        <div className="restricted-icon">
+          ⏸️
+        </div>
+
+        <h1>Account Suspended</h1>
+
+        <p>
+          Your account has been temporarily restricted
+          by the Suara Hati moderation team.
+        </p>
+
+        <button
+          className="auth-submit"
+          onClick={() => signOut(auth)}
+        >
+          Log Out
+        </button>
+
+      </div>
+
+    </div>
+  );
+}
+
   if (isAdmin) {
   return (
-    <div className="app">
+    <div className={`app ${isPageSwitching ? "page-switching" : ""}`}>
 
       <header className="navbar">
 
@@ -218,9 +327,20 @@ useEffect(() => {
        <div className="nav-buttons">
 
         <button
-          className="login-button"
+            className={`login-button ${
+              currentPage === "admin" ? "nav-active" : ""
+            }`}
+            onClick={() => changePage("admin")}
+      >
+         🛡️ Admin
+        </button>
+
+        <button
+          className={`login-button ${
+            currentPage === "community" ? "nav-active" : ""
+          }`}
           onClick={() =>
-            setCurrentPage("community")
+            changePage("community")
           }
       >
          💭 Community
@@ -228,14 +348,132 @@ useEffect(() => {
 
 
         <button
-          className="login-button"
+          className={`login-button ${
+            currentPage === "letters" ? "nav-active" : ""
+          }`}
           onClick={() =>
-            setCurrentPage("letters")
+            changePage("letters")
           }
       >
           💌 My Letters
+
+          {unreadLetterCount > 0 && (
+             <span className="nav-notification-badge">
+              {unreadLetterCount}
+             </span>
+        )}
         </button>
 
+        <div className="theme-picker">
+
+  <button
+    type="button"
+    className="theme-picker-button"
+    onClick={() => setThemeMenuOpen((open) => !open)}
+  >
+    🎨 Theme
+    <span className="theme-picker-arrow">
+      ▾
+    </span>
+  </button>
+
+  {themeMenuOpen && (
+    <div className="theme-picker-menu">
+
+      <button
+        type="button"
+        className={theme === "aurora" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("aurora");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot aurora-dot" />
+        <span>
+          <strong>Aurora Blue</strong>
+          <small>Dreamy & magical</small>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        className={theme === "ocean" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("ocean");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot ocean-dot" />
+        <span>
+          <strong>Ocean Depth</strong>
+          <small>Deep & peaceful</small>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        className={theme === "lavender" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("lavender");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot lavender-dot" />
+        <span>
+          <strong>Lavender Night</strong>
+          <small>Soft & cozy</small>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        className={theme === "teal" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("teal");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot teal-dot" />
+        <span>
+          <strong>Teal Mist</strong>
+          <small>Natural & calming</small>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        className={theme === "midnight" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("midnight");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot midnight-dot" />
+        <span>
+          <strong>Midnight Sky</strong>
+          <small>Quiet & starry</small>
+        </span>
+      </button>
+
+      <button
+        type="button"
+        className={theme === "celestial" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("celestial");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot celestial-dot" />
+        <span>
+          <strong>Celestial Dream</strong>
+          <small>Light & dreamy</small>
+        </span>
+      </button>
+
+    </div>
+  )}
+
+</div>
 
         <span style={{ color: "#a8adbd" }}>
            @{profile.username}
@@ -253,14 +491,66 @@ useEffect(() => {
 
       </header>
 
+      {currentPage === "community" && (
+       <Community
+           user={user}
+           profile={profile}
+      />
+    )}
+
+      {currentPage === "letters" && (
+       <Letters
+          user={user}
+          profile={profile}
+      />
+    )}
+
+      {currentPage === "admin" && (
       <Admin />
+    )}
 
     </div>
   );
 }
 
+useEffect(() => {
+  if (!user) {
+    setUnreadLetterCount(0);
+    return;
+  }
+
+  const lettersQuery = query(
+    collection(db, "letters"),
+    where("receiverId", "==", user.uid),
+    where("status", "==", "approved")
+  );
+
+  const unsubscribe = onSnapshot(
+    lettersQuery,
+    (snapshot) => {
+      let readIds = [];
+
+      try {
+        readIds = JSON.parse(
+          localStorage.getItem("suaraHatiReadLetters") || "[]"
+        );
+      } catch {
+        readIds = [];
+      }
+
+      const unread = snapshot.docs.filter(
+        (letterDoc) => !readIds.includes(letterDoc.id)
+      ).length;
+
+      setUnreadLetterCount(unread);
+    }
+  );
+
+  return () => unsubscribe();
+}, [user]);
+
 return (
-  <div className="app">
+  <div className={`app ${isPageSwitching ? "page-switching" : ""}`}>
 
     <header className="navbar">
 
@@ -270,16 +560,25 @@ return (
 
       <div className="nav-buttons">
 
+        {isAdmin && (
         <button
           className="login-button"
-          onClick={() => setCurrentPage("community")}
+          onClick={() => changePage("admin")}
+        >
+          🛡️ Admin
+        </button>
+      )}
+
+        <button
+          className="login-button"
+          onClick={() => changePage("community")}
         >
           💭 Community
         </button>
 
         <button
           className="login-button"
-          onClick={() => setCurrentPage("letters")}
+          onClick={() => changePage("letters")}
         >
           💌 My Letters
         </button>
@@ -293,6 +592,15 @@ return (
           onClick={() => signOut(auth)}
         >
           Log Out
+        </button>
+
+        <button
+          className="login-button"
+          onClick={() =>
+             changePage("warnings")
+          }
+       >
+         ⚠️ My Warnings
         </button>
 
       </div>
@@ -315,6 +623,12 @@ return (
       />
     )}
 
+
+    {currentPage === "warnings" && (
+      <Warnings
+         user={user}
+      />
+    )}
 
     <footer>
       <p>

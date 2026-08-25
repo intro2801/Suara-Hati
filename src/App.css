@@ -1042,3 +1042,7587 @@ footer {
   margin: 0;
   line-height: 1.6;
 }
+
+.letter-open-stage {
+  position: relative;
+  width: 260px;
+  height: 230px;
+  margin: 0 auto;
+}
+
+.open-envelope-image {
+  position: absolute;
+  width: 220px;
+  max-width: none;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+@keyframes paperComeOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 80px) scale(0.96);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate(-50%, 20px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -10px) scale(1);
+  }
+}
+
+/* STEP 24G - Clean envelope display */
+
+.letter-paper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 20px 0 !important;
+  min-height: auto !important;
+}
+
+/* Bigger closed envelope */
+.letter-paper.closed .letter-envelope-image {
+  width: 420px;
+  max-width: 95%;
+}
+
+/* Bigger opened envelope */
+.open-envelope-image {
+  width: 420px;
+  max-width: none;
+}
+
+/* Give opened letter enough room */
+.letter-open-stage {
+  width: 480px;
+  max-width: 100%;
+  height: 300px;
+}
+
+.open-envelope-image {
+  animation: envelopeOpenAppear 0.28s ease-out forwards;
+}
+
+@keyframes envelopeOpenAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.letter-paper.closed .letter-envelope-image {
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.letter-paper.closed:hover .letter-envelope-image {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+.letter-paper.closed:active .letter-envelope-image {
+  transform: scale(0.96);
+}
+
+.letter-open-stage {
+  position: relative;
+  width: 480px;
+  max-width: 100%;
+  height: 380px;
+  margin: 0 auto;
+}
+
+.open-envelope-image {
+  position: absolute;
+  width: 420px;
+  max-width: none;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.letter-message-overlay {
+  position: absolute;
+  left: 50%;
+  top: 105px;
+  transform: translateX(-50%);
+
+  width: 250px;
+  box-sizing: border-box;
+
+  color: #333;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+
+  overflow-wrap: anywhere;
+  cursor: pointer;
+
+  z-index: 3;
+
+  transition:
+  top 0.6s ease,
+  width 0.6s ease,
+  min-height 0.6s ease,
+  padding 0.6s ease,
+  transform 0.6s ease,
+  opacity 0.4s ease;
+}
+
+.letter-message-overlay.preview:hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.letter-message-overlay.preview {
+  position: absolute;
+
+  left: 50%;
+  top: 155px;
+
+  width: 250px;
+  height: 115px;
+
+  transform: translateX(-50%);
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  z-index: 3;
+}
+
+.letter-message-overlay.expanded {
+  top: 25px;
+  width: 320px;
+  min-height: 230px;
+
+  padding: 0;
+
+  background: #fffaf1;
+  border-radius: 10px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+
+  transform: translateX(-50%) translateY(-55px);
+  opacity: 1;
+
+  z-index: 5;
+}
+
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.paper-click-area {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 18px 22px;
+
+  box-sizing: border-box;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.paper-click-area p {
+  margin: 0;
+
+  width: 100%;
+
+  color: #6f6258;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+
+  text-align: center;
+
+  letter-spacing: 0.15px;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  opacity: 0.9;
+}
+
+/* ========================================
+   ACCOUNT RESTRICTION
+======================================== */
+
+.account-restricted-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: #0f1117;
+}
+
+.account-restricted-card {
+  width: 100%;
+  max-width: 470px;
+
+  background: #171a23;
+
+  border: 1px solid #292e3b;
+  border-radius: 18px;
+
+  padding: 35px;
+
+  text-align: center;
+}
+
+.restricted-icon {
+  font-size: 50px;
+
+  margin-bottom: 20px;
+}
+
+.account-restricted-card h1 {
+  margin-bottom: 15px;
+}
+
+.account-restricted-card p {
+  color: #8d93a3;
+
+  line-height: 1.7;
+
+  margin-bottom: 25px;
+}
+
+/* ========================================
+   ADMIN USER MANAGEMENT
+======================================== */
+
+.admin-user-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.admin-user-card {
+  background: #171a23;
+
+  border: 1px solid #292e3b;
+  border-radius: 14px;
+
+  padding: 20px;
+}
+
+.admin-user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.admin-user-info strong {
+  font-size: 16px;
+}
+
+.admin-user-info p {
+  color: #777f91;
+
+  margin-top: 5px;
+
+  font-size: 13px;
+}
+
+.admin-user-id {
+  color: #555c6e;
+
+  font-size: 11px;
+
+  margin-top: 12px;
+  margin-bottom: 15px;
+
+  word-break: break-all;
+}
+
+.user-status {
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+}
+
+.user-status-active {
+  background: #24372d;
+  color: #a6dbb9;
+}
+
+.user-status-suspended {
+  background: #3c3422;
+  color: #ead28c;
+}
+
+.user-status-banned {
+  background: #3c2529;
+  color: #e9a1aa;
+}
+
+@media (max-width: 600px) {
+
+  .admin-user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+/* ========================================
+   MODERATION HISTORY
+======================================== */
+
+.moderation-history-description {
+  color: #777f91;
+  margin-top: -10px;
+  margin-bottom: 22px;
+}
+
+.moderation-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moderation-history-card {
+  background: #171a23;
+
+  border: 1px solid #292e3b;
+  border-radius: 14px;
+
+  padding: 20px;
+}
+
+.moderation-history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 20px;
+
+  margin-bottom: 18px;
+}
+
+.moderation-history-top > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.moderation-history-top strong {
+  color: #e4e7ed;
+}
+
+.moderation-history-date {
+  color: #626878;
+  font-size: 12px;
+}
+
+.moderation-action {
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+}
+
+.moderation-action-warning {
+  background: #3b3522;
+  color: #e7d58b;
+}
+
+.moderation-action-suspended {
+  background: #392f22;
+  color: #e5bd7b;
+}
+
+.moderation-action-banned {
+  background: #3b2529;
+  color: #e9a0aa;
+}
+
+.moderation-history-info {
+  margin-top: 12px;
+}
+
+.moderation-history-info strong {
+  display: block;
+
+  color: #858b9c;
+
+  font-size: 12px;
+
+  margin-bottom: 5px;
+}
+
+.moderation-history-info p {
+  color: #d9dce5;
+
+  line-height: 1.6;
+}
+
+.moderation-history-userid {
+  border-top: 1px solid #292e3b;
+
+  margin-top: 16px;
+  padding-top: 12px;
+
+  color: #555c6e;
+
+  font-size: 10px;
+
+  word-break: break-all;
+}
+
+@media (max-width: 600px) {
+
+  .moderation-history-top {
+    flex-direction: column;
+  }
+
+}
+
+.moderation-action-restored {
+  background: #24372d;
+  color: #a6dbb9;
+}
+
+.moderation-history-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 14px;
+}
+
+/* ========================================
+   USER WARNINGS
+======================================== */
+
+.warnings-page {
+  max-width: 850px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.warnings-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.warnings-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.warnings-header h1 {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.warnings-header p {
+  color: #858b9c;
+}
+
+.warning-count-card {
+  max-width: 220px;
+  margin: 0 auto 35px;
+
+  background: #171a23;
+
+  border: 1px solid #3b3522;
+  border-radius: 14px;
+
+  padding: 20px;
+
+  text-align: center;
+}
+
+.warning-count-card strong {
+  display: block;
+
+  font-size: 34px;
+
+  color: #e7d58b;
+}
+
+.warning-count-card span {
+  color: #858b9c;
+  font-size: 13px;
+}
+
+.warning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.warning-card {
+  background: #171a23;
+
+  border: 1px solid #292e3b;
+  border-left: 3px solid #c8a949;
+
+  border-radius: 14px;
+
+  padding: 20px;
+}
+
+.warning-card-top {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 18px;
+}
+
+.warning-card-top span {
+  color: #626878;
+  font-size: 12px;
+}
+
+.warning-info {
+  margin-top: 12px;
+}
+
+.warning-info strong {
+  display: block;
+
+  color: #858b9c;
+
+  font-size: 12px;
+
+  margin-bottom: 5px;
+}
+
+.warning-info p {
+  color: #d9dce5;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+
+  .warning-card-top {
+    flex-direction: column;
+  }
+
+}
+
+.warning-limit-text {
+  color: #e9a1aa !important;
+  font-weight: bold;
+}
+
+.moderation-action-warning_reset {
+  background: #25313a;
+  color: #9bc7da;
+}
+
+/* ========================================
+   ADMIN USER DETAILS
+   ======================================== */
+
+.admin-user-details {
+  margin: 20px 0 28px;
+  padding: 24px;
+  background: #161b26;
+  border: 1px solid #2b3445;
+  border-radius: 14px;
+}
+
+.admin-user-details-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #2b3445;
+}
+
+.admin-user-details-header h2 {
+  margin: 5px 0 0;
+  font-size: 22px;
+}
+
+.admin-user-details-header .admin-label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #8fa1c1;
+}
+
+.admin-user-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.admin-user-details-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: #10141d;
+  border: 1px solid #293143;
+  border-radius: 10px;
+}
+
+.admin-user-details-grid span {
+  font-size: 11px;
+  color: #8492ad;
+}
+
+.admin-user-details-grid strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.admin-user-activity {
+  margin-top: 10px;
+}
+
+.admin-user-activity h3 {
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+.admin-user-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-user-activity-card {
+  padding: 15px 16px;
+  background: #10141d;
+  border: 1px solid #293143;
+  border-radius: 10px;
+}
+
+.admin-user-activity-card p {
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.admin-user-activity-card span {
+  font-size: 11px;
+  color: #8492ad;
+}
+
+.admin-user-name-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-user-name-button:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+  .admin-user-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-user-activity-card.clickable {
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-user-activity-card.clickable:hover {
+  border-color: #7891a8;
+  transform: translateY(-1px);
+}
+
+.admin-activity-details {
+  margin: 18px 0 22px;
+  padding: 20px;
+  background: #121722;
+  border: 1px solid #2b3445;
+  border-radius: 12px;
+}
+
+.admin-activity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.admin-user-search {
+  margin: 16px 0 20px;
+}
+
+.admin-user-search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  background: #10141d;
+  border: 1px solid #293143;
+  border-radius: 10px;
+  color: inherit;
+  font: inherit;
+}
+
+.admin-user-search input:focus {
+  outline: 1px solid #7891a8;
+  border-color: #7891a8;
+}
+
+/* =========================================
+   SUARA HATI - CUTE AQUA / ENVELOPE THEME
+========================================= */
+
+:root {
+  --sh-bg: #f8fbfc;
+  --sh-surface: #fffaf3;
+  --sh-surface-2: #eefcfe;
+
+  --sh-aqua: #75d9df;
+  --sh-aqua-soft: #bdeff2;
+  --sh-aqua-deep: #45bfc8;
+
+  --sh-peach: #ffe7d2;
+  --sh-pink: #ffd9e3;
+
+  --sh-text: #182235;
+  --sh-muted: #718096;
+
+  --sh-border: #172033;
+
+  --sh-shadow:
+    0 8px 0 rgba(23, 32, 51, 0.08),
+    0 14px 28px rgba(23, 32, 51, 0.10);
+}
+
+
+/* PAGE BACKGROUND */
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(189, 239, 242, 0.45), transparent 26%),
+    radial-gradient(circle at top right, rgba(255, 231, 210, 0.38), transparent 24%),
+    var(--sh-bg);
+
+  color: var(--sh-text);
+}
+
+
+/* MAIN APP */
+
+.app {
+  background: transparent;
+  color: var(--sh-text);
+}
+
+
+/* NAVBAR */
+
+header {
+  background: rgba(255, 250, 243, 0.96);
+  border-bottom: 3px solid var(--sh-border);
+  box-shadow: 0 5px 0 rgba(23, 32, 51, 0.06);
+}
+
+header h1,
+header strong,
+header span {
+  color: var(--sh-text);
+}
+
+.nav-buttons button,
+.login-button,
+.signup-button {
+  border: 2px solid var(--sh-border);
+  border-radius: 14px;
+  background: var(--sh-surface);
+  color: var(--sh-text);
+  font-weight: 700;
+  box-shadow: 0 3px 0 rgba(23, 32, 51, 0.12);
+  transition: 0.18s ease;
+}
+
+.nav-buttons button:hover,
+.login-button:hover,
+.signup-button:hover {
+  transform: translateY(-2px);
+  background: var(--sh-aqua-soft);
+}
+
+
+/* GENERAL CARDS */
+
+.admin-section,
+.post-card,
+.thought-box,
+.letter-card,
+.admin-user-card,
+.admin-user-details,
+.admin-activity-details {
+  background: var(--sh-surface);
+  border: 3px solid var(--sh-border);
+  border-radius: 22px;
+  box-shadow: var(--sh-shadow);
+}
+
+
+/* FORM / TEXTAREA / INPUT */
+
+textarea,
+input,
+.admin-user-search input {
+  background: #ffffff;
+  color: var(--sh-text);
+  border: 2px solid var(--sh-border);
+  border-radius: 16px;
+  box-shadow: inset 0 2px 0 rgba(23, 32, 51, 0.05);
+}
+
+textarea:focus,
+input:focus,
+.admin-user-search input:focus {
+  outline: none;
+  border-color: var(--sh-aqua-deep);
+  box-shadow:
+    0 0 0 4px rgba(117, 217, 223, 0.18);
+}
+
+
+/* PRIMARY BUTTONS */
+
+.approve-button,
+.send-button,
+.primary-button {
+  background: var(--sh-aqua);
+  color: var(--sh-text);
+  border: 2px solid var(--sh-border);
+  border-radius: 13px;
+  box-shadow: 0 4px 0 rgba(23, 32, 51, 0.15);
+  font-weight: 800;
+}
+
+.approve-button:hover,
+.send-button:hover,
+.primary-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* REJECT / DELETE */
+
+.reject-button {
+  background: var(--sh-pink);
+  color: var(--sh-text);
+  border: 2px solid var(--sh-border);
+  border-radius: 13px;
+  font-weight: 800;
+}
+
+.delete-button {
+  background: var(--sh-peach);
+  color: var(--sh-text);
+  border: 2px solid var(--sh-border);
+  border-radius: 13px;
+  font-weight: 800;
+}
+
+
+/* TABS */
+
+.letter-tabs,
+.admin-tabs {
+  gap: 10px;
+}
+
+.letter-tab {
+  background: var(--sh-surface);
+  color: var(--sh-text);
+  border: 2px solid var(--sh-border);
+  border-radius: 16px;
+  box-shadow: 0 3px 0 rgba(23, 32, 51, 0.10);
+  font-weight: 700;
+}
+
+.letter-tab:hover {
+  background: var(--sh-aqua-soft);
+  transform: translateY(-1px);
+}
+
+.letter-tab.active {
+  background: var(--sh-aqua);
+  color: var(--sh-text);
+  border-color: var(--sh-border);
+}
+
+.letter-tab-count {
+  background: #ffffff;
+  color: var(--sh-text);
+  border: 1.5px solid var(--sh-border);
+}
+
+
+/* COMMUNITY POSTS */
+
+.post-card {
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf8 0%,
+      #f3fdff 100%
+    );
+}
+
+.post-header {
+  color: var(--sh-text);
+}
+
+.post-date,
+.empty-message,
+.character-count {
+  color: var(--sh-muted);
+}
+
+
+/* USER DETAILS */
+
+.admin-user-details-grid > div {
+  background: #ffffff;
+  border: 2px solid var(--sh-border);
+  border-radius: 16px;
+}
+
+.admin-user-details-grid span {
+  color: var(--sh-muted);
+}
+
+.admin-user-activity-card {
+  background: #ffffff;
+  border: 2px solid var(--sh-border);
+  border-radius: 16px;
+}
+
+.admin-user-activity-card.clickable:hover {
+  background: var(--sh-aqua-soft);
+  border-color: var(--sh-border);
+}
+
+
+/* STATUS BADGES */
+
+.user-status,
+.viz-badge,
+.letter-tab-count {
+  border-radius: 999px;
+}
+
+.user-status-active {
+  background: #d9f7df;
+  color: #215c2c;
+}
+
+.user-status-suspended {
+  background: #fff0c9;
+  color: #6d5011;
+}
+
+.user-status-banned {
+  background: #ffd9df;
+  color: #7c2030;
+}
+
+
+/* SECTION TITLES */
+
+.admin-section h2,
+.posts-section h2,
+.admin-user-details h2,
+.admin-user-activity h3 {
+  color: var(--sh-text);
+}
+
+
+/* LITTLE CUTE LIFT */
+
+button,
+.post-card,
+.admin-user-card,
+.admin-user-details,
+.admin-user-activity-card {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  header {
+    border-bottom-width: 2px;
+  }
+
+  .admin-section,
+  .post-card,
+  .thought-box,
+  .letter-card,
+  .admin-user-card,
+  .admin-user-details,
+  .admin-activity-details {
+    border-radius: 18px;
+  }
+
+  .letter-tabs,
+  .admin-tabs {
+    gap: 8px;
+  }
+
+  .letter-tab {
+    border-radius: 14px;
+  }
+}
+
+/* =========================================
+   SUARA HATI CARTOON THEME - PASS 2
+========================================= */
+
+
+/* ---------- MAIN PAGE ---------- */
+
+body,
+#root {
+  background:
+    radial-gradient(circle at 15% 10%, #dffbfc 0, transparent 25%),
+    radial-gradient(circle at 85% 15%, #fff0df 0, transparent 25%),
+    #f7fcfc !important;
+
+  color: #172033 !important;
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+header {
+  background: #fffaf2 !important;
+  border: 3px solid #172033 !important;
+  border-top: none !important;
+  border-radius: 0 0 22px 22px !important;
+
+  box-shadow:
+    0 6px 0 rgba(23, 32, 51, 0.08) !important;
+}
+
+
+/* SUARA HATI LOGO */
+
+header h1,
+header strong {
+  color: #172033 !important;
+}
+
+
+/* ---------- ADMIN MAIN AREA ---------- */
+
+.admin-container,
+.admin-page,
+main {
+  background: transparent !important;
+}
+
+
+/* ADMIN TITLE */
+
+.admin-header h1,
+.admin-header h2 {
+  color: #172033 !important;
+}
+
+.admin-header p {
+  color: #718096 !important;
+}
+
+
+/* ---------- TOP ADMIN TABS ---------- */
+
+.letter-tabs.admin-tabs {
+  padding: 8px;
+  background: #e9fbfc;
+  border: 2px solid #172033;
+  border-radius: 20px;
+
+  box-shadow:
+    0 5px 0 rgba(23, 32, 51, 0.08);
+}
+
+
+.letter-tab {
+  min-height: 58px;
+
+  background: #fffaf2 !important;
+  color: #172033 !important;
+
+  border: 2px solid #172033 !important;
+  border-radius: 15px !important;
+
+  padding: 9px 14px;
+
+  box-shadow:
+    0 3px 0 rgba(23, 32, 51, 0.13);
+
+  transition: 0.18s ease;
+}
+
+
+.letter-tab:hover {
+  background: #dff9fb !important;
+  transform: translateY(-2px);
+}
+
+
+.letter-tab.active {
+  background:
+    linear-gradient(
+      180deg,
+      #9ce9ed,
+      #6fd6dc
+    ) !important;
+
+  border-color: #172033 !important;
+
+  box-shadow:
+    0 4px 0 rgba(23, 32, 51, 0.18);
+}
+
+
+/* COUNT CIRCLE */
+
+.letter-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 21px;
+  height: 21px;
+
+  margin-left: 5px;
+
+  background: #ffffff !important;
+  color: #172033 !important;
+
+  border: 2px solid #172033 !important;
+  border-radius: 999px;
+
+  font-weight: 800;
+}
+
+
+/* ---------- SECTIONS ---------- */
+
+.admin-section {
+  background: #fffaf2 !important;
+
+  border: 3px solid #172033 !important;
+  border-radius: 24px !important;
+
+  padding: 22px !important;
+
+  box-shadow:
+    0 7px 0 rgba(23, 32, 51, 0.08),
+    0 16px 30px rgba(23, 32, 51, 0.08) !important;
+}
+
+
+.admin-section > h2 {
+  color: #172033 !important;
+}
+
+
+/* ---------- REPORT CARDS ---------- */
+
+.report-card,
+.letter-report-card,
+.admin-report-card {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f0fcfd 100%
+    ) !important;
+
+  color: #172033 !important;
+
+  border: 3px solid #172033 !important;
+  border-radius: 20px !important;
+
+  padding: 18px !important;
+
+  box-shadow:
+    0 5px 0 rgba(23, 32, 51, 0.08) !important;
+}
+
+
+/* Force text inside cards readable */
+
+.report-card *,
+.letter-report-card *,
+.admin-report-card * {
+  color: #172033;
+}
+
+
+/* ---------- INNER INFORMATION BOXES ---------- */
+
+.report-info,
+.admin-user-details-grid > div,
+.admin-user-activity-card {
+  background: #ffffff !important;
+
+  color: #172033 !important;
+
+  border: 2px solid #172033 !important;
+  border-radius: 16px !important;
+}
+
+
+/* ---------- ACTION BUTTONS ---------- */
+
+.approve-button {
+  background: #8ee3d0 !important;
+  color: #172033 !important;
+
+  border: 2px solid #172033 !important;
+  border-radius: 12px !important;
+}
+
+
+.reject-button {
+  background: #ffd5df !important;
+  color: #172033 !important;
+
+  border: 2px solid #172033 !important;
+  border-radius: 12px !important;
+}
+
+
+.delete-button {
+  background: #ffe6d2 !important;
+  color: #172033 !important;
+
+  border: 2px solid #172033 !important;
+  border-radius: 12px !important;
+}
+
+
+/* OTHER ADMIN BUTTONS */
+
+.admin-actions button {
+  border: 2px solid #172033 !important;
+  border-radius: 12px !important;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 3px 0 rgba(23, 32, 51, 0.12);
+}
+
+
+.admin-actions button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ---------- OVERVIEW ---------- */
+
+.admin-overview,
+.admin-dashboard {
+  background: transparent !important;
+}
+
+
+.admin-overview h2,
+.admin-dashboard h2 {
+  color: #172033 !important;
+}
+
+
+/* ---------- USER CARDS ---------- */
+
+.admin-user-card {
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf8,
+      #effcfd
+    ) !important;
+
+  color: #172033 !important;
+
+  border: 3px solid #172033 !important;
+  border-radius: 20px !important;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+  .letter-tabs.admin-tabs {
+    padding: 6px;
+    border-radius: 17px;
+  }
+
+  .letter-tab {
+    min-height: 52px;
+    padding: 7px 9px;
+  }
+
+  .admin-section {
+    padding: 15px !important;
+    border-radius: 19px !important;
+  }
+}
+
+/* =========================================
+   OVERVIEW - SUARA HATI CARTOON STYLE
+========================================= */
+
+.overview-section {
+  overflow: hidden;
+}
+
+.overview-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  padding: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dffafb,
+      #fff4e7
+    );
+
+  border: 3px solid #172033;
+  border-radius: 22px;
+
+  margin-bottom: 20px;
+}
+
+.overview-hero h2 {
+  margin: 4px 0 8px;
+  color: #172033;
+}
+
+.overview-hero p {
+  color: #6f7d91;
+}
+
+.overview-envelope {
+  font-size: 62px;
+  line-height: 1;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.overview-card {
+  min-height: 120px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf8,
+      #eafcfd
+    );
+
+  border: 3px solid #172033;
+  border-radius: 20px;
+
+  box-shadow:
+    0 5px 0 rgba(23, 32, 51, 0.08);
+
+  text-align: center;
+}
+
+.overview-card span {
+  color: #536174;
+  font-weight: 700;
+}
+
+.overview-card strong {
+  font-size: 28px;
+  color: #172033;
+}
+
+@media (max-width: 600px) {
+  .overview-hero {
+    align-items: flex-start;
+  }
+
+  .overview-envelope {
+    font-size: 45px;
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================
+   SUARA HATI — MOONLIGHT BLUE TEST
+   Night-friendly dark blue theme
+========================================= */
+
+/* MAIN BACKGROUND */
+html,
+body,
+#root {
+  min-height: 100%;
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(73, 111, 145, 0.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 35%,
+      rgba(74, 148, 158, 0.10),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #111827 0%,
+      #151f30 50%,
+      #111a28 100%
+    ) !important;
+
+  color: #e8edf5 !important;
+}
+
+
+/* REMOVE LIGHT BACKGROUND COVERING PAGE */
+main,
+.admin-page,
+.admin-container,
+.admin-main {
+  background: transparent !important;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+header {
+  background: #182235 !important;
+
+  border: 2px solid #40516a !important;
+  border-top: none !important;
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+
+/* NAVBAR TEXT */
+
+header,
+header h1,
+header strong,
+header span,
+header p {
+  color: #e8edf5 !important;
+}
+
+
+/* NAV BUTTONS */
+
+header button,
+header a {
+  background: #202c40 !important;
+  color: #e8edf5 !important;
+
+  border: 1px solid #52647d !important;
+
+  box-shadow: none !important;
+}
+
+
+header button:hover,
+header a:hover {
+  background: #2b3b53 !important;
+  border-color: #79c9ce !important;
+}
+
+
+/* =========================================
+   ADMIN TITLE
+========================================= */
+
+.admin-header h1,
+.admin-header h2 {
+  color: #edf2f8 !important;
+}
+
+.admin-header p,
+.admin-label {
+  color: #9fb0c5 !important;
+}
+
+
+/* =========================================
+   TOP TAB CONTAINER
+========================================= */
+
+.letter-tabs.admin-tabs {
+  background: #182235 !important;
+
+  border: 1px solid #40516a !important;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.16) !important;
+}
+
+
+/* INDIVIDUAL TABS */
+
+.letter-tab {
+  background: #202c40 !important;
+  color: #cbd6e4 !important;
+
+  border: 1px solid #40516a !important;
+
+  box-shadow: none !important;
+}
+
+
+/* HOVER */
+
+.letter-tab:hover {
+  background: #27364d !important;
+  border-color: #79c9ce !important;
+
+  transform: translateY(-1px);
+}
+
+
+/* ACTIVE TAB */
+
+.letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      #315268,
+      #29465b
+    ) !important;
+
+  color: #f1f7fa !important;
+
+  border: 1px solid #79c9ce !important;
+
+  box-shadow:
+    0 0 0 1px rgba(121, 201, 206, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.18) !important;
+}
+
+
+/* NUMBER CIRCLES */
+
+.letter-tab-count {
+  background: #79c9ce !important;
+  color: #111827 !important;
+
+  border: none !important;
+}
+
+
+/* =========================================
+   LARGE SECTIONS
+========================================= */
+
+.admin-section {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(31, 43, 62, 0.96),
+      rgba(24, 34, 53, 0.96)
+    ) !important;
+
+  color: #e8edf5 !important;
+
+  border: 1px solid #40516a !important;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.20),
+    inset 0 1px rgba(255,255,255,0.025) !important;
+}
+
+
+/* SECTION TITLES */
+
+.admin-section h1,
+.admin-section h2,
+.admin-section h3 {
+  color: #e8edf5 !important;
+}
+
+
+/* =========================================
+   OVERVIEW WELCOME
+========================================= */
+
+.overview-hero {
+  background:
+    linear-gradient(
+      135deg,
+      #27364d,
+      #202c40
+    ) !important;
+
+  border: 1px solid #52647d !important;
+
+  box-shadow:
+    inset 0 1px rgba(255,255,255,0.04) !important;
+}
+
+
+.overview-hero h2 {
+  color: #edf2f8 !important;
+}
+
+
+.overview-hero p {
+  color: #aab7ca !important;
+}
+
+
+/* =========================================
+   OVERVIEW CARDS
+========================================= */
+
+.overview-card {
+  background:
+    linear-gradient(
+      145deg,
+      #27364d,
+      #202c40
+    ) !important;
+
+  border: 1px solid #40516a !important;
+
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.16),
+    inset 0 1px rgba(255,255,255,0.035) !important;
+}
+
+
+.overview-card span {
+  color: #aab7ca !important;
+}
+
+
+.overview-card strong {
+  color: #f0f4f8 !important;
+}
+
+
+.overview-card:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #2c3e57,
+      #24334a
+    ) !important;
+
+  border-color: #79c9ce !important;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   REPORT CARDS
+========================================= */
+
+.report-card,
+.letter-report-card,
+.admin-report-card {
+  background: #202c40 !important;
+
+  color: #e8edf5 !important;
+
+  border: 1px solid #40516a !important;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.17) !important;
+}
+
+
+.report-card *,
+.letter-report-card *,
+.admin-report-card * {
+  color: #dce5ef;
+}
+
+
+/* INNER INFORMATION BOXES */
+
+.report-info,
+.admin-user-details-grid > div,
+.admin-user-activity-card {
+  background: #182235 !important;
+
+  color: #e8edf5 !important;
+
+  border: 1px solid #40516a !important;
+}
+
+
+/* =========================================
+   USER CARDS
+========================================= */
+
+.admin-user-card {
+  background:
+    linear-gradient(
+      145deg,
+      #202c40,
+      #1b2639
+    ) !important;
+
+  color: #e8edf5 !important;
+
+  border: 1px solid #40516a !important;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.approve-button {
+  background: #315e58 !important;
+  color: #e9f6f2 !important;
+  border: 1px solid #568a82 !important;
+}
+
+
+.reject-button {
+  background: #603f4a !important;
+  color: #f4e6ea !important;
+  border: 1px solid #875b68 !important;
+}
+
+
+.delete-button {
+  background: #514a45 !important;
+  color: #eee8e2 !important;
+  border: 1px solid #756b63 !important;
+}
+
+
+.admin-actions button {
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   GENERAL TEXT
+========================================= */
+
+.admin-section p {
+  color: #aab7ca;
+}
+
+
+/* IDs / IMPORTANT VALUES */
+
+.admin-section strong {
+  color: #edf2f8;
+}
+
+
+/* =========================================
+   SCROLLBAR — OPTIONAL BUT MATCHING
+========================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #40516a;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52647d;
+}
+
+/* ==================================================
+   SUARA HATI — FINAL 6 THEMES
+================================================== */
+
+
+/* 1 — AURORA BLUE */
+
+html[data-theme="aurora"] {
+  --sh-bg-1: #06132f;
+  --sh-bg-2: #0b2550;
+  --sh-bg-3: #182e68;
+
+  --sh-panel: rgba(12, 35, 78, 0.92);
+  --sh-panel-2: rgba(17, 49, 100, 0.90);
+
+  --sh-card: rgba(17, 47, 94, 0.95);
+  --sh-card-hover: #183d78;
+
+  --sh-border: #496aa1;
+
+  --sh-text: #f4f8ff;
+  --sh-muted: #b8c7e2;
+
+  --sh-accent: #67d9dc;
+  --sh-accent-2: #8e68e8;
+
+  --sh-shadow: rgba(0, 0, 0, 0.32);
+}
+
+
+/* 2 — OCEAN DEPTH */
+
+html[data-theme="ocean"] {
+  --sh-bg-1: #021827;
+  --sh-bg-2: #043347;
+  --sh-bg-3: #075267;
+
+  --sh-panel: rgba(5, 43, 60, 0.94);
+  --sh-panel-2: rgba(7, 60, 76, 0.92);
+
+  --sh-card: rgba(8, 63, 80, 0.96);
+  --sh-card-hover: #0e596d;
+
+  --sh-border: #347c8a;
+
+  --sh-text: #f0fdff;
+  --sh-muted: #afd2d8;
+
+  --sh-accent: #59d7d0;
+  --sh-accent-2: #1e9db0;
+
+  --sh-shadow: rgba(0, 18, 28, 0.36);
+}
+
+
+/* 3 — LAVENDER NIGHT */
+
+html[data-theme="lavender"] {
+  --sh-bg-1: #17113b;
+  --sh-bg-2: #28205b;
+  --sh-bg-3: #403078;
+
+  --sh-panel: rgba(37, 29, 84, 0.94);
+  --sh-panel-2: rgba(54, 42, 108, 0.92);
+
+  --sh-card: rgba(56, 45, 111, 0.96);
+  --sh-card-hover: #4d3d86;
+
+  --sh-border: #7665b0;
+
+  --sh-text: #fbf7ff;
+  --sh-muted: #cec2e5;
+
+  --sh-accent: #dc9adf;
+  --sh-accent-2: #9675e2;
+
+  --sh-shadow: rgba(17, 8, 45, 0.36);
+}
+
+
+/* 4 — TEAL MIST */
+
+html[data-theme="teal"] {
+  --sh-bg-1: #03272d;
+  --sh-bg-2: #06434c;
+  --sh-bg-3: #0d6263;
+
+  --sh-panel: rgba(6, 57, 64, 0.94);
+  --sh-panel-2: rgba(8, 76, 80, 0.92);
+
+  --sh-card: rgba(10, 83, 86, 0.96);
+  --sh-card-hover: #11666a;
+
+  --sh-border: #448c8b;
+
+  --sh-text: #f1fcfa;
+  --sh-muted: #add1cc;
+
+  --sh-accent: #77d2b6;
+  --sh-accent-2: #319a83;
+
+  --sh-shadow: rgba(0, 28, 28, 0.34);
+}
+
+
+/* 5 — MIDNIGHT SKY */
+
+html[data-theme="midnight"] {
+  --sh-bg-1: #030918;
+  --sh-bg-2: #07162f;
+  --sh-bg-3: #10284e;
+
+  --sh-panel: rgba(7, 23, 48, 0.95);
+  --sh-panel-2: rgba(12, 35, 67, 0.93);
+
+  --sh-card: rgba(13, 39, 72, 0.97);
+  --sh-card-hover: #15365e;
+
+  --sh-border: #455f82;
+
+  --sh-text: #f4f7fb;
+  --sh-muted: #a9b7ca;
+
+  --sh-accent: #e9bd66;
+  --sh-accent-2: #6075a0;
+
+  --sh-shadow: rgba(0, 0, 0, 0.42);
+}
+
+
+/* 6 — CELESTIAL DREAM */
+
+html[data-theme="celestial"] {
+  --sh-bg-1: #5f91dc;
+  --sh-bg-2: #8eb8ef;
+  --sh-bg-3: #d6e8ff;
+
+  --sh-panel: rgba(229, 241, 255, 0.93);
+  --sh-panel-2: rgba(214, 232, 255, 0.92);
+
+  --sh-card: rgba(236, 245, 255, 0.97);
+  --sh-card-hover: #ffffff;
+
+  --sh-border: #779bc8;
+
+  --sh-text: #21395d;
+  --sh-muted: #617a9d;
+
+  --sh-accent: #6a9de5;
+  --sh-accent-2: #b6cff5;
+
+  --sh-shadow: rgba(56, 88, 135, 0.22);
+}
+
+
+/* ==================================================
+   APPLY CURRENT THEME
+================================================== */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body,
+#root {
+  background:
+    radial-gradient(
+      circle at 15% 12%,
+      color-mix(in srgb, var(--sh-accent) 18%, transparent),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 85% 25%,
+      color-mix(in srgb, var(--sh-accent-2) 16%, transparent),
+      transparent 32%
+    ),
+
+    linear-gradient(
+      145deg,
+      var(--sh-bg-1) 0%,
+      var(--sh-bg-2) 55%,
+      var(--sh-bg-3) 100%
+    ) !important;
+
+  background-attachment: fixed !important;
+  color: var(--sh-text) !important;
+}
+
+
+/* MAIN CONTENT */
+
+main,
+.admin-page,
+.admin-container,
+.admin-main {
+  background: transparent !important;
+}
+
+
+/* NAVBAR */
+
+header {
+  background: var(--sh-panel) !important;
+  color: var(--sh-text) !important;
+  border-color: var(--sh-border) !important;
+
+  box-shadow:
+    0 8px 24px var(--sh-shadow) !important;
+}
+
+header *,
+.nav-buttons * {
+  color: var(--sh-text);
+}
+
+
+/* NORMAL NAV BUTTONS */
+
+header button {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+  border: 1px solid var(--sh-border) !important;
+}
+
+header button:hover {
+  background: var(--sh-card-hover) !important;
+}
+
+
+/* THEME SELECTOR */
+
+.theme-selector {
+  background: var(--sh-card);
+  color: var(--sh-text);
+
+  border: 1px solid var(--sh-border);
+  border-radius: 12px;
+
+  padding: 8px 10px;
+
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.theme-selector option {
+  background: var(--sh-panel);
+  color: var(--sh-text);
+}
+
+
+/* ADMIN TITLES */
+
+.admin-header h1,
+.admin-header h2,
+.admin-section h1,
+.admin-section h2,
+.admin-section h3 {
+  color: var(--sh-text) !important;
+}
+
+.admin-label,
+.admin-header p {
+  color: var(--sh-muted) !important;
+}
+
+
+/* LARGE SECTIONS */
+
+.admin-section {
+  background: var(--sh-panel) !important;
+  color: var(--sh-text) !important;
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 12px 30px var(--sh-shadow) !important;
+}
+
+
+/* TOP TAB BAR */
+
+.letter-tabs.admin-tabs {
+  background: var(--sh-panel-2) !important;
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+
+/* TABS */
+
+.letter-tab {
+  background: var(--sh-card) !important;
+  color: var(--sh-muted) !important;
+  border: 1px solid var(--sh-border) !important;
+  box-shadow: none !important;
+}
+
+.letter-tab:hover {
+  background: var(--sh-card-hover) !important;
+  color: var(--sh-text) !important;
+}
+
+.letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-soft),
+      var(--sh-card-hover)
+    ) !important;
+
+  color: var(--sh-text) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+
+/* COUNTERS */
+
+.letter-tab-count {
+  background: var(--sh-accent) !important;
+  color: var(--sh-bg-1) !important;
+  border: none !important;
+}
+
+
+/* OVERVIEW WELCOME */
+
+.overview-hero {
+  background:
+    linear-gradient(
+      135deg,
+      var(--sh-panel-2),
+      var(--sh-card)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+}
+
+.overview-hero h2 {
+  color: var(--sh-text) !important;
+}
+
+.overview-hero p {
+  color: var(--sh-muted) !important;
+}
+
+
+/* OVERVIEW CARDS */
+
+.overview-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 7px 18px var(--sh-shadow) !important;
+}
+
+.overview-card:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+.overview-card span {
+  color: var(--sh-muted) !important;
+}
+
+.overview-card strong {
+  color: var(--sh-text) !important;
+}
+
+
+/* USER + REPORT + ACTIVITY CARDS */
+
+.admin-user-card,
+.report-card,
+.letter-report-card,
+.admin-report-card,
+.admin-user-details,
+.admin-activity-details,
+.admin-user-activity-card {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+  border-color: var(--sh-border) !important;
+
+  box-shadow:
+    0 7px 20px var(--sh-shadow) !important;
+}
+
+
+/* INNER BOXES */
+
+.report-info,
+.admin-user-details-grid > div {
+  background: var(--sh-panel-2) !important;
+  color: var(--sh-text) !important;
+  border-color: var(--sh-border) !important;
+}
+
+
+/* SECONDARY TEXT */
+
+.admin-section p,
+.admin-user-details span,
+.admin-user-activity-card span {
+  color: var(--sh-muted);
+}
+
+
+/* IMPORTANT VALUES */
+
+.admin-section strong,
+.admin-user-card strong,
+.admin-user-details strong {
+  color: var(--sh-text);
+}
+
+/* ==================================================
+   SUARA HATI — THEME DECORATIONS
+================================================== */
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Shared decorative layer */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* 1. AURORA BLUE */
+html[data-theme="aurora"] body::before {
+  width: 70%;
+  height: 45%;
+  top: 4%;
+  left: 15%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(103, 255, 223, 0.18),
+      rgba(97, 121, 255, 0.12) 45%,
+      transparent 70%
+    );
+
+  filter: blur(45px);
+  transform: rotate(-8deg);
+}
+
+html[data-theme="aurora"] body::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.38) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+
+  background-size:
+    90px 90px,
+    150px 150px;
+
+  background-position:
+    20px 30px,
+    70px 80px;
+
+  opacity: 0.35;
+}
+
+
+/* 2. OCEAN DEPTH */
+html[data-theme="ocean"] body::before {
+  width: 100%;
+  height: 35%;
+  bottom: 0;
+  left: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      rgba(80, 220, 220, 0.14),
+      transparent 70%
+    );
+
+  filter: blur(30px);
+}
+
+html[data-theme="ocean"] body::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 70%,
+      rgba(135, 255, 235, 0.08),
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(77, 206, 231, 0.09),
+      transparent 15%
+    );
+}
+
+
+/* 3. LAVENDER NIGHT */
+html[data-theme="lavender"] body::before {
+  width: 320px;
+  height: 320px;
+  top: 8%;
+  right: 4%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 230, 255, 0.14),
+      rgba(190, 150, 255, 0.09) 45%,
+      transparent 72%
+    );
+
+  filter: blur(12px);
+}
+
+html[data-theme="lavender"] body::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.33) 1px, transparent 1px);
+
+  background-size: 120px 120px;
+
+  opacity: 0.28;
+}
+
+
+/* 4. TEAL MIST */
+html[data-theme="teal"] body::before {
+  width: 100%;
+  height: 42%;
+  bottom: 0;
+  left: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(32, 105, 90, 0.18),
+      rgba(25, 95, 90, 0.08),
+      transparent
+    );
+}
+
+html[data-theme="teal"] body::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(122, 213, 189, 0.09),
+      transparent 16%
+    ),
+    radial-gradient(
+      circle at 80% 18%,
+      rgba(122, 213, 189, 0.07),
+      transparent 13%
+    );
+}
+
+
+/* 5. MIDNIGHT SKY */
+html[data-theme="midnight"] body::before {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.42) 1px, transparent 1px),
+    radial-gradient(circle, rgba(230,189,104,0.28) 1px, transparent 1px);
+
+  background-size:
+    100px 100px,
+    170px 170px;
+
+  background-position:
+    20px 30px,
+    80px 120px;
+
+  opacity: 0.34;
+}
+
+html[data-theme="midnight"] body::after {
+  width: 260px;
+  height: 120px;
+  top: 12%;
+  right: 9%;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 20%,
+      rgba(230, 189, 104, 0.16) 50%,
+      transparent 80%
+    );
+
+  filter: blur(12px);
+  transform: rotate(-18deg);
+}
+
+
+/* 6. CELESTIAL DREAM */
+html[data-theme="celestial"] body::before {
+  width: 75%;
+  height: 35%;
+  bottom: 0;
+  left: 12%;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      rgba(255,255,255,0.72),
+      rgba(210,230,255,0.38) 48%,
+      transparent 72%
+    );
+
+  filter: blur(18px);
+}
+
+html[data-theme="celestial"] body::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 70% 15%,
+      rgba(255,255,255,0.65),
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 20% 25%,
+      rgba(255,255,255,0.42),
+      transparent 8%
+    );
+
+  opacity: 0.55;
+}
+
+/* ==================================================
+   SUARA HATI — COMMUNITY THEME SUPPORT
+================================================== */
+
+
+/* COMMUNITY PAGE BACKGROUND */
+
+.community-page,
+.community-container,
+.posts-section {
+  background: transparent !important;
+  color: var(--sh-text) !important;
+}
+
+
+/* COMMUNITY TITLE */
+
+.community-page h1,
+.community-page h2,
+.community-page h3,
+.posts-section h2 {
+  color: var(--sh-text) !important;
+}
+
+.community-page p,
+.community-subtitle {
+  color: var(--sh-muted) !important;
+}
+
+
+/* POST COMPOSER / "WHAT IS ON YOUR MIND" */
+
+.thought-box,
+.post-form,
+.community-form {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 10px 28px var(--sh-shadow) !important;
+}
+
+
+/* TEXTAREA */
+
+.thought-box textarea,
+.community-page textarea,
+.post-form textarea {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  caret-color: var(--sh-accent);
+}
+
+
+/* PLACEHOLDER */
+
+.thought-box textarea::placeholder,
+.community-page textarea::placeholder,
+.post-form textarea::placeholder {
+  color: var(--sh-muted) !important;
+  opacity: 0.8;
+}
+
+
+/* POST BUTTON */
+
+.thought-box button,
+.post-form button {
+  background: var(--sh-accent-soft) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-accent) !important;
+}
+
+
+/* COMMUNITY POST CARDS */
+
+.post-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+
+/* USERNAME */
+
+.post-card strong,
+.post-author,
+.post-username {
+  color: var(--sh-text) !important;
+}
+
+
+/* POST CONTENT */
+
+.post-card p,
+.post-content {
+  color: var(--sh-text) !important;
+}
+
+
+/* DATE */
+
+.post-date,
+.post-card time {
+  color: var(--sh-muted) !important;
+}
+
+
+/* DIVIDER */
+
+.post-card hr {
+  border-color: var(--sh-border) !important;
+  opacity: 0.55;
+}
+
+
+/* ACTION BUTTONS */
+
+.post-card button {
+  background: var(--sh-panel) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+}
+
+.post-card button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+
+/* CHARACTER COUNT + HELPER TEXT */
+
+.character-count,
+.thought-footer,
+.thought-footer span {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   FINAL SHARED CARD STYLE
+================================================== */
+
+.admin-section,
+.thought-box,
+.post-card,
+.letter-card,
+.admin-user-card,
+.admin-user-details,
+.admin-activity-details,
+.report-card,
+.letter-report-card,
+.admin-report-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 10px 28px var(--sh-shadow) !important;
+}
+
+/* INNER BOXES */
+
+.admin-user-details-grid > div,
+.admin-user-activity-card,
+.report-info,
+.overview-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 14px !important;
+}
+
+/* ==================================================
+   STEP 4 — THEME TEXT COLORS
+================================================== */
+
+h1,
+h2,
+h3,
+h4,
+strong {
+  color: var(--sh-text) !important;
+}
+
+p,
+span,
+small,
+.character-count,
+.post-date,
+.community-subtitle {
+  color: var(--sh-muted);
+}
+
+.post-content,
+.post-card p,
+.admin-user-activity-card p {
+  color: var(--sh-text) !important;
+}
+
+/* ==================================================
+   STEP 5 — NAVBAR THEME STYLE
+================================================== */
+
+header {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 8px 25px var(--sh-shadow) !important;
+}
+
+header button,
+.theme-selector {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 10px !important;
+}
+
+header button:hover,
+.theme-selector:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+/* ==================================================
+   STEP 6 — ADMIN TAB STYLE
+================================================== */
+
+.letter-tabs.admin-tabs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  gap: 10px;
+}
+
+.letter-tab {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  box-shadow:
+    0 5px 14px var(--sh-shadow) !important;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.letter-tab:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+  transform: translateY(-2px);
+}
+
+.letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  color: var(--sh-text) !important;
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 18px
+      color-mix(in srgb, var(--sh-accent) 24%, transparent),
+    0 6px 16px var(--sh-shadow) !important;
+}
+
+.letter-tab-count {
+  background: var(--sh-accent) !important;
+  color: var(--sh-bg-1) !important;
+  border: none !important;
+  font-weight: 800;
+}
+
+/* ==================================================
+   STEP 6 — ADMIN TAB STYLE
+================================================== */
+
+.letter-tabs.admin-tabs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  gap: 10px;
+}
+
+.letter-tab {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  box-shadow:
+    0 5px 14px var(--sh-shadow) !important;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.letter-tab:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+  transform: translateY(-2px);
+}
+
+.letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  color: var(--sh-text) !important;
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 18px
+      color-mix(in srgb, var(--sh-accent) 24%, transparent),
+    0 6px 16px var(--sh-shadow) !important;
+}
+
+.letter-tab-count {
+  background: var(--sh-accent) !important;
+  color: var(--sh-bg-1) !important;
+  border: none !important;
+  font-weight: 800;
+}
+
+/* ==================================================
+   STEP 8 — MY LETTERS THEME STYLE
+================================================== */
+
+/* PAGE */
+.letters-page,
+.letters-container,
+.letters-section {
+  background: transparent !important;
+  color: var(--sh-text) !important;
+}
+
+
+/* TITLES */
+.letters-page h1,
+.letters-page h2,
+.letters-page h3,
+.letters-section h2 {
+  color: var(--sh-text) !important;
+}
+
+.letters-page p,
+.letters-subtitle,
+.letters-empty {
+  color: var(--sh-muted) !important;
+}
+
+
+/* LETTER TABS */
+.letters-page .letter-tabs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.letters-page .letter-tab {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  box-shadow:
+    0 5px 14px var(--sh-shadow) !important;
+}
+
+.letters-page .letter-tab:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+.letters-page .letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 16px
+      color-mix(in srgb, var(--sh-accent) 22%, transparent),
+    0 6px 16px var(--sh-shadow) !important;
+}
+
+
+/* LETTER CARDS */
+.letter-card,
+.letter-item,
+.inbox-letter,
+.sent-letter,
+.reply-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+
+/* LETTER TEXT */
+.letter-card h3,
+.letter-card strong,
+.letter-card p,
+.letter-content,
+.letter-message,
+.reply-card p {
+  color: var(--sh-text) !important;
+}
+
+
+/* SECONDARY TEXT */
+.letter-date,
+.letter-meta,
+.letter-status,
+.letter-card span,
+.reply-card span {
+  color: var(--sh-muted) !important;
+}
+
+
+/* OPEN LETTER / PAPER */
+.letter-paper,
+.open-letter,
+.letter-content-box {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel-2),
+      var(--sh-card)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 10px 25px var(--sh-shadow) !important;
+}
+
+
+/* LETTER ACTION BUTTONS */
+.letter-card button,
+.reply-card button,
+.letters-page button {
+  background: var(--sh-panel) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 9px !important;
+}
+
+.letter-card button:hover,
+.reply-card button:hover,
+.letters-page button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+
+/* TEXTAREA / REPLY BOX */
+.letters-page textarea,
+.reply-box textarea {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 14px !important;
+
+  caret-color: var(--sh-accent) !important;
+}
+
+.letters-page textarea::placeholder,
+.reply-box textarea::placeholder {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 8 — MY LETTERS THEME STYLE
+================================================== */
+
+/* PAGE */
+.letters-page,
+.letters-container,
+.letters-section {
+  background: transparent !important;
+  color: var(--sh-text) !important;
+}
+
+
+/* TITLES */
+.letters-page h1,
+.letters-page h2,
+.letters-page h3,
+.letters-section h2 {
+  color: var(--sh-text) !important;
+}
+
+.letters-page p,
+.letters-subtitle,
+.letters-empty {
+  color: var(--sh-muted) !important;
+}
+
+
+/* LETTER TABS */
+.letters-page .letter-tabs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.letters-page .letter-tab {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  box-shadow:
+    0 5px 14px var(--sh-shadow) !important;
+}
+
+.letters-page .letter-tab:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+.letters-page .letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 16px
+      color-mix(in srgb, var(--sh-accent) 22%, transparent),
+    0 6px 16px var(--sh-shadow) !important;
+}
+
+
+/* LETTER CARDS */
+.letter-card,
+.letter-item,
+.inbox-letter,
+.sent-letter,
+.reply-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+
+/* LETTER TEXT */
+.letter-card h3,
+.letter-card strong,
+.letter-card p,
+.letter-content,
+.letter-message,
+.reply-card p {
+  color: var(--sh-text) !important;
+}
+
+
+/* SECONDARY TEXT */
+.letter-date,
+.letter-meta,
+.letter-status,
+.letter-card span,
+.reply-card span {
+  color: var(--sh-muted) !important;
+}
+
+
+/* OPEN LETTER / PAPER */
+.letter-paper,
+.open-letter,
+.letter-content-box {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel-2),
+      var(--sh-card)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 10px 25px var(--sh-shadow) !important;
+}
+
+
+/* LETTER ACTION BUTTONS */
+.letter-card button,
+.reply-card button,
+.letters-page button {
+  background: var(--sh-panel) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 9px !important;
+}
+
+.letter-card button:hover,
+.reply-card button:hover,
+.letters-page button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+
+/* TEXTAREA / REPLY BOX */
+.letters-page textarea,
+.reply-box textarea {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 14px !important;
+
+  caret-color: var(--sh-accent) !important;
+}
+
+.letters-page textarea::placeholder,
+.reply-box textarea::placeholder {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 8 — MY LETTERS THEME STYLE
+================================================== */
+
+/* PAGE */
+.letters-page,
+.letters-container,
+.letters-section {
+  background: transparent !important;
+  color: var(--sh-text) !important;
+}
+
+
+/* TITLES */
+.letters-page h1,
+.letters-page h2,
+.letters-page h3,
+.letters-section h2 {
+  color: var(--sh-text) !important;
+}
+
+.letters-page p,
+.letters-subtitle,
+.letters-empty {
+  color: var(--sh-muted) !important;
+}
+
+
+/* LETTER TABS */
+.letters-page .letter-tabs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.letters-page .letter-tab {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  box-shadow:
+    0 5px 14px var(--sh-shadow) !important;
+}
+
+.letters-page .letter-tab:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+.letters-page .letter-tab.active {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 16px
+      color-mix(in srgb, var(--sh-accent) 22%, transparent),
+    0 6px 16px var(--sh-shadow) !important;
+}
+
+
+/* LETTER CARDS */
+.letter-card,
+.letter-item,
+.inbox-letter,
+.sent-letter,
+.reply-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+
+/* LETTER TEXT */
+.letter-card h3,
+.letter-card strong,
+.letter-card p,
+.letter-content,
+.letter-message,
+.reply-card p {
+  color: var(--sh-text) !important;
+}
+
+
+/* SECONDARY TEXT */
+.letter-date,
+.letter-meta,
+.letter-status,
+.letter-card span,
+.reply-card span {
+  color: var(--sh-muted) !important;
+}
+
+
+/* OPEN LETTER / PAPER */
+.letter-paper,
+.open-letter,
+.letter-content-box {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel-2),
+      var(--sh-card)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 10px 25px var(--sh-shadow) !important;
+}
+
+
+/* LETTER ACTION BUTTONS */
+.letter-card button,
+.reply-card button,
+.letters-page button {
+  background: var(--sh-panel) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 9px !important;
+}
+
+.letter-card button:hover,
+.reply-card button:hover,
+.letters-page button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+
+/* TEXTAREA / REPLY BOX */
+.letters-page textarea,
+.reply-box textarea {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 14px !important;
+
+  caret-color: var(--sh-accent) !important;
+}
+
+.letters-page textarea::placeholder,
+.reply-box textarea::placeholder {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 11 — GENERAL INPUTS / SELECTS / TEXTAREAS
+================================================== */
+
+input,
+textarea,
+select {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 11px !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--sh-muted) !important;
+  opacity: 0.75;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(in srgb, var(--sh-accent) 16%, transparent) !important;
+}
+
+
+/* ==================================================
+   STEP 12 — GENERAL BUTTON POLISH
+================================================== */
+
+button {
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+/* ==================================================
+   STEP 13 — SCROLLBAR
+================================================== */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--sh-border)
+    var(--sh-bg-1);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sh-bg-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      var(--sh-border),
+      var(--sh-accent-2)
+    );
+
+  border-radius: 20px;
+
+  border: 2px solid var(--sh-bg-1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sh-accent);
+}
+
+
+/* ==================================================
+   STEP 14 — STATUS BADGES
+================================================== */
+
+.user-status,
+.status-badge,
+.viz-badge,
+.letter-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 4px 9px;
+
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.user-status-active,
+.status-approved {
+  background:
+    color-mix(
+      in srgb,
+      #64c98b 22%,
+      var(--sh-card)
+    ) !important;
+
+  color: #c9f5d7 !important;
+
+  border: 1px solid #65a97c !important;
+}
+
+.user-status-suspended,
+.status-pending {
+  background:
+    color-mix(
+      in srgb,
+      #d8ad58 22%,
+      var(--sh-card)
+    ) !important;
+
+  color: #f4deb0 !important;
+
+  border: 1px solid #aa8748 !important;
+}
+
+.user-status-banned,
+.status-rejected {
+  background:
+    color-mix(
+      in srgb,
+      #c85c70 22%,
+      var(--sh-card)
+    ) !important;
+
+  color: #f2bdc7 !important;
+
+  border: 1px solid #a95363 !important;
+}
+
+
+/* ==================================================
+   STEP 15 — ADMIN ACTION BUTTON COLORS
+================================================== */
+
+.approve-button {
+  background:
+    color-mix(
+      in srgb,
+      #3f9b78 45%,
+      var(--sh-card)
+    ) !important;
+
+  color: #ecfff7 !important;
+
+  border: 1px solid #65b895 !important;
+}
+
+.reject-button,
+.ban-button {
+  background:
+    color-mix(
+      in srgb,
+      #a9475d 42%,
+      var(--sh-card)
+    ) !important;
+
+  color: #fff0f3 !important;
+
+  border: 1px solid #bd6376 !important;
+}
+
+.delete-button {
+  background:
+    color-mix(
+      in srgb,
+      #9b6547 38%,
+      var(--sh-card)
+    ) !important;
+
+  color: #fff3e9 !important;
+
+  border: 1px solid #b47b5b !important;
+}
+
+.warn-button {
+  background:
+    color-mix(
+      in srgb,
+      #c28e3f 38%,
+      var(--sh-card)
+    ) !important;
+
+  color: #fff4d8 !important;
+
+  border: 1px solid #c49a59 !important;
+}
+
+
+/* ==================================================
+   STEP 16 — MOBILE THEME POLISH
+================================================== */
+
+@media (max-width: 700px) {
+
+  header {
+    border-radius: 0 0 16px 16px !important;
+  }
+
+  .admin-section,
+  .thought-box,
+  .post-card,
+  .letter-card {
+    border-radius: 15px !important;
+  }
+
+  .letter-tabs,
+  .admin-tabs {
+    gap: 7px !important;
+  }
+
+  .letter-tab {
+    min-height: 48px;
+    padding: 8px 10px !important;
+  }
+
+  .theme-selector {
+    max-width: 160px;
+  }
+
+  .overview-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ==================================================
+   STEP 17 — SHARED DECORATION SYSTEM
+================================================== */
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* ==================================================
+   STEP 18 — AURORA BLUE
+   Soft aurora + stars
+================================================== */
+
+html[data-theme="aurora"] body::before {
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 25% 15%,
+      rgba(91, 245, 221, 0.18),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      ellipse at 65% 5%,
+      rgba(124, 91, 235, 0.22),
+      transparent 32%
+    ),
+
+    radial-gradient(
+      ellipse at 80% 35%,
+      rgba(55, 180, 230, 0.12),
+      transparent 25%
+    );
+
+  filter: blur(20px);
+}
+
+html[data-theme="aurora"] body::after {
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.55) 1px,
+      transparent 1.5px
+    );
+
+  background-size: 90px 90px;
+  opacity: 0.22;
+}
+
+
+/* ==================================================
+   STEP 19 — OCEAN DEPTH
+   Deep ocean + underwater light
+================================================== */
+
+html[data-theme="ocean"] body::before {
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% -5%,
+      rgba(99, 230, 221, 0.22),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 10% 75%,
+      rgba(28, 154, 173, 0.15),
+      transparent 30%
+    );
+}
+
+html[data-theme="ocean"] body::after {
+  width: 100%;
+  height: 260px;
+
+  left: 0;
+  bottom: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 100%,
+      rgba(79, 200, 188, 0.15),
+      transparent 40%
+    ),
+
+    radial-gradient(
+      ellipse at 80% 100%,
+      rgba(42, 137, 155, 0.17),
+      transparent 40%
+    );
+}
+
+
+/* ==================================================
+   STEP 20 — LAVENDER NIGHT
+   Purple glow + moonlight
+================================================== */
+
+html[data-theme="lavender"] body::before {
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 82% 15%,
+      rgba(236, 193, 255, 0.18),
+      transparent 17%
+    ),
+
+    radial-gradient(
+      ellipse at 25% 20%,
+      rgba(161, 112, 235, 0.18),
+      transparent 30%
+    );
+}
+
+html[data-theme="lavender"] body::after {
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 231, 255, 0.5) 1px,
+      transparent 1.4px
+    );
+
+  background-size: 125px 125px;
+  opacity: 0.20;
+}
+
+
+/* ==================================================
+   STEP 21 — TEAL MIST
+   Forest-like teal mist
+================================================== */
+
+html[data-theme="teal"] body::before {
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(103, 216, 183, 0.18),
+      transparent 42%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(64, 173, 151, 0.12),
+      transparent 28%
+    );
+}
+
+html[data-theme="teal"] body::after {
+  width: 100%;
+  height: 300px;
+
+  left: 0;
+  bottom: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 32, 35, 0.28),
+      transparent
+    );
+
+  opacity: 0.7;
+}
+
+
+/* ==================================================
+   STEP 22 — MIDNIGHT + CELESTIAL
+================================================== */
+
+/* MIDNIGHT */
+
+html[data-theme="midnight"] body::before {
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(232, 189, 102, 0.13),
+      transparent 16%
+    ),
+
+    radial-gradient(
+      ellipse at 30% 5%,
+      rgba(61, 96, 168, 0.15),
+      transparent 32%
+    );
+}
+
+html[data-theme="midnight"] body::after {
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.60) 1px,
+      transparent 1.3px
+    ),
+
+    radial-gradient(
+      circle,
+      rgba(232,189,102,0.45) 1px,
+      transparent 1.5px
+    );
+
+  background-size:
+    100px 100px,
+    175px 175px;
+
+  opacity: 0.27;
+}
+
+
+/* CELESTIAL */
+
+html[data-theme="celestial"] body::before {
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 15%,
+      rgba(255,255,255,0.70),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 35%,
+      rgba(255,255,255,0.55),
+      transparent 25%
+    );
+}
+
+html[data-theme="celestial"] body::after {
+  width: 100%;
+  height: 280px;
+
+  left: 0;
+  bottom: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 100%,
+      rgba(255,255,255,0.68),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(255,255,255,0.55),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 80% 100%,
+      rgba(255,255,255,0.65),
+      transparent 35%
+    );
+
+  filter: blur(15px);
+}
+
+/* ==================================================
+   STEP 23 — OVERVIEW HERO UPGRADE
+================================================== */
+
+.overview-hero {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 145px;
+  padding: 25px 28px !important;
+
+  background:
+    radial-gradient(
+      circle at 88% 20%,
+      color-mix(in srgb, var(--sh-accent) 18%, transparent),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      var(--sh-panel-2),
+      var(--sh-card)
+    ) !important;
+
+  border: 1px solid
+    color-mix(in srgb, var(--sh-border) 80%, var(--sh-accent)) !important;
+
+  border-radius: 20px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    0 10px 26px var(--sh-shadow) !important;
+}
+
+.overview-hero::after {
+  content: "♡";
+
+  position: absolute;
+  right: 35px;
+  top: 18px;
+
+  font-size: 100px;
+  line-height: 1;
+
+  color:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 12%,
+      transparent
+    );
+
+  transform: rotate(-12deg);
+
+  pointer-events: none;
+}
+
+.overview-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.overview-hero h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: 8px !important;
+}
+
+.overview-hero .admin-label {
+  color: var(--sh-accent) !important;
+
+  font-size: 0.75rem;
+  font-weight: 900;
+
+  letter-spacing: 1.4px;
+}
+
+/* ==================================================
+   STEP 24 — OVERVIEW STAT CARDS
+================================================== */
+
+.overview-grid {
+  gap: 15px !important;
+}
+
+.overview-card {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 125px;
+
+  padding: 20px 15px !important;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      color-mix(in srgb, var(--sh-accent) 10%, transparent),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  border:
+    1px solid var(--sh-border) !important;
+
+  border-radius: 17px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 8px 20px var(--sh-shadow) !important;
+}
+
+.overview-card::after {
+  content: "";
+
+  position: absolute;
+  width: 70px;
+  height: 70px;
+
+  right: -25px;
+  bottom: -30px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 10%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+.overview-card strong {
+  font-size: 2rem !important;
+  font-weight: 900;
+
+  color: var(--sh-text) !important;
+}
+
+.overview-card span {
+  color: var(--sh-muted) !important;
+  font-weight: 700;
+}
+
+.overview-card:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 18px
+      color-mix(in srgb, var(--sh-accent) 12%, transparent),
+    0 10px 24px var(--sh-shadow) !important;
+}
+
+/* ==================================================
+   STEP 26 — BEAUTIFUL THEME PICKER
+================================================== */
+
+.theme-picker {
+  position: relative;
+  z-index: 100;
+}
+
+.theme-picker-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  min-height: 38px;
+
+  padding: 8px 12px !important;
+
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 10px !important;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.theme-picker-arrow {
+  color: var(--sh-muted) !important;
+  font-size: 0.8rem;
+}
+
+
+/* DROPDOWN */
+
+.theme-picker-menu {
+  position: absolute;
+
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 260px;
+
+  padding: 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 16px;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.32);
+
+  backdrop-filter: blur(18px);
+
+  z-index: 9999;
+}
+
+
+/* EACH THEME OPTION */
+
+.theme-picker-menu > button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 10px !important;
+
+  margin: 2px 0;
+
+  text-align: left;
+
+  background: transparent !important;
+
+  border: 1px solid transparent !important;
+  border-radius: 11px !important;
+
+  cursor: pointer;
+}
+
+.theme-picker-menu > button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-border) !important;
+
+  transform: none;
+}
+
+.theme-picker-menu > button > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.theme-picker-menu strong {
+  color: var(--sh-text) !important;
+  font-size: 0.86rem;
+}
+
+.theme-picker-menu small {
+  color: var(--sh-muted) !important;
+  font-size: 0.70rem;
+}
+
+
+/* COLOR PREVIEW CIRCLES */
+
+.theme-dot {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    inset 0 1px 3px rgba(255,255,255,0.35),
+    0 3px 8px rgba(0,0,0,0.22);
+}
+
+.aurora-dot {
+  background:
+    linear-gradient(
+      135deg,
+      #65e0d1,
+      #3259c7,
+      #8c62e2
+    );
+}
+
+.ocean-dot {
+  background:
+    linear-gradient(
+      135deg,
+      #53d8d0,
+      #08708a,
+      #03273c
+    );
+}
+
+.lavender-dot {
+  background:
+    linear-gradient(
+      135deg,
+      #e09ddd,
+      #8261cf,
+      #251d59
+    );
+}
+
+.teal-dot {
+  background:
+    linear-gradient(
+      135deg,
+      #79d2b5,
+      #167a70,
+      #06383d
+    );
+}
+
+.midnight-dot {
+  background:
+    linear-gradient(
+      135deg,
+      #e8bd67,
+      #294d84,
+      #040c20
+    );
+}
+
+.celestial-dot {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #acd0fa,
+      #689be4
+    );
+}
+
+/* ==================================================
+   STEP 27 — SELECTED THEME INDICATOR
+================================================== */
+
+.theme-picker-menu > button {
+  position: relative;
+}
+
+.theme-picker-menu > button.selected-theme {
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 12%,
+      var(--sh-card)
+    ) !important;
+
+  border-color: var(--sh-accent) !important;
+}
+
+.theme-picker-menu > button.selected-theme::after {
+  content: "✓";
+
+  position: absolute;
+  right: 12px;
+
+  color: var(--sh-accent);
+
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+/* ==================================================
+   STEP 28 — THEME PICKER MOBILE FIX
+================================================== */
+
+@media (max-width: 700px) {
+
+  .theme-picker {
+    width: 100%;
+  }
+
+  .theme-picker-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .theme-picker-menu {
+    width: min(280px, calc(100vw - 30px));
+
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .theme-picker-menu > button {
+    min-height: 54px;
+  }
+}
+
+/* ==================================================
+   STEP 29 — UNIQUE OVERVIEW HERO FOR EACH THEME
+================================================== */
+
+
+/* ---------- SHARED HERO ---------- */
+
+.overview-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.overview-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ==================================================
+   1 — AURORA BLUE
+================================================== */
+
+html[data-theme="aurora"] .overview-hero {
+  background:
+    radial-gradient(
+      ellipse at 75% 20%,
+      rgba(110, 255, 223, 0.20),
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 90% 65%,
+      rgba(155, 103, 255, 0.24),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #0b2854,
+      #173d78
+    ) !important;
+}
+
+html[data-theme="aurora"] .overview-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      125deg,
+      transparent 35%,
+      rgba(94, 255, 208, 0.11) 45%,
+      rgba(137, 102, 255, 0.14) 55%,
+      transparent 68%
+    );
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   2 — OCEAN DEPTH
+================================================== */
+
+html[data-theme="ocean"] .overview-hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(74, 230, 221, 0.18),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #063145,
+      #075066
+    ) !important;
+}
+
+html[data-theme="ocean"] .overview-hero::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -25px;
+
+  height: 80px;
+
+  background:
+    radial-gradient(
+      ellipse at 20% 100%,
+      rgba(88, 218, 208, 0.13),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 70% 100%,
+      rgba(70, 180, 200, 0.14),
+      transparent 45%
+    );
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   3 — LAVENDER NIGHT
+================================================== */
+
+html[data-theme="lavender"] .overview-hero {
+  background:
+    radial-gradient(
+      circle at 86% 18%,
+      rgba(244, 207, 255, 0.20),
+      transparent 16%
+    ),
+    radial-gradient(
+      ellipse at 75% 75%,
+      rgba(215, 127, 224, 0.14),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #2a215f,
+      #46357d
+    ) !important;
+}
+
+html[data-theme="lavender"] .overview-hero::before {
+  content: "☾";
+
+  position: absolute;
+
+  right: 28px;
+  top: 12px;
+
+  font-size: 72px;
+  line-height: 1;
+
+  color: rgba(255, 229, 255, 0.16);
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   4 — TEAL MIST
+================================================== */
+
+html[data-theme="teal"] .overview-hero {
+  background:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(125, 230, 190, 0.16),
+      transparent 27%
+    ),
+    linear-gradient(
+      135deg,
+      #07454b,
+      #0c6665
+    ) !important;
+}
+
+html[data-theme="teal"] .overview-hero::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 65%;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 38, 39, 0.22),
+      transparent
+    );
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   5 — MIDNIGHT SKY
+================================================== */
+
+html[data-theme="midnight"] .overview-hero {
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(233, 189, 102, 0.14),
+      transparent 18%
+    ),
+    linear-gradient(
+      135deg,
+      #07152f,
+      #10294f
+    ) !important;
+}
+
+html[data-theme="midnight"] .overview-hero::before {
+  content: "✦   ·   ✧";
+
+  position: absolute;
+
+  right: 22px;
+  top: 18px;
+
+  color: rgba(244, 211, 141, 0.28);
+
+  font-size: 23px;
+  letter-spacing: 9px;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   6 — CELESTIAL DREAM
+================================================== */
+
+html[data-theme="celestial"] .overview-hero {
+  background:
+    radial-gradient(
+      ellipse at 82% 22%,
+      rgba(255, 255, 255, 0.78),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #cce3ff,
+      #9fc4f4
+    ) !important;
+}
+
+html[data-theme="celestial"] .overview-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 190px;
+  height: 90px;
+
+  right: -15px;
+  bottom: -30px;
+
+  background:
+    radial-gradient(
+      ellipse at 25% 55%,
+      rgba(255,255,255,0.75) 0%,
+      rgba(255,255,255,0.75) 30%,
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 55% 45%,
+      rgba(255,255,255,0.68) 0%,
+      rgba(255,255,255,0.68) 32%,
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 80% 60%,
+      rgba(255,255,255,0.65) 0%,
+      rgba(255,255,255,0.65) 28%,
+      transparent 30%
+    );
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   ENVELOPE ICON ADAPTS TO THE THEME
+================================================== */
+
+.overview-envelope {
+  position: relative;
+  z-index: 3;
+
+  font-size: 56px;
+
+  padding: 12px;
+
+  border-radius: 18px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 12%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--sh-accent) 35%,
+      transparent
+    );
+}
+
+
+/* MIDNIGHT gets warm envelope glow */
+
+html[data-theme="midnight"] .overview-envelope {
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(233,189,102,0.20)
+    );
+}
+
+
+/* LAVENDER gets pink glow */
+
+html[data-theme="lavender"] .overview-envelope {
+  filter:
+    drop-shadow(
+      0 0 12px
+      rgba(220,154,223,0.22)
+    );
+}
+
+
+/* CELESTIAL needs dark readable text */
+
+html[data-theme="celestial"] .overview-hero h2,
+html[data-theme="celestial"] .overview-hero p,
+html[data-theme="celestial"] .overview-hero .admin-label {
+  color: #29456d !important;
+}
+
+/* ==================================================
+   STEP 30 — UNIQUE MAIN BACKGROUND FOR EACH THEME
+================================================== */
+
+
+/* =========================================
+   1 — AURORA BLUE
+   dreamy aurora + stars
+========================================= */
+
+html[data-theme="aurora"] body,
+html[data-theme="aurora"] #root {
+  background:
+    radial-gradient(
+      ellipse at 20% 10%,
+      rgba(76, 255, 218, 0.12),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      ellipse at 75% 12%,
+      rgba(144, 95, 255, 0.18),
+      transparent 34%
+    ),
+
+    radial-gradient(
+      ellipse at 55% 30%,
+      rgba(43, 145, 255, 0.12),
+      transparent 32%
+    ),
+
+    linear-gradient(
+      145deg,
+      #06132f 0%,
+      #0b2550 50%,
+      #182e68 100%
+    ) !important;
+}
+
+
+/* =========================================
+   2 — OCEAN DEPTH
+   deep ocean + underwater glow
+========================================= */
+
+html[data-theme="ocean"] body,
+html[data-theme="ocean"] #root {
+  background:
+    radial-gradient(
+      ellipse at 50% -5%,
+      rgba(100, 230, 220, 0.18),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      ellipse at 12% 80%,
+      rgba(0, 140, 170, 0.16),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      ellipse at 90% 65%,
+      rgba(0, 90, 130, 0.18),
+      transparent 32%
+    ),
+
+    linear-gradient(
+      145deg,
+      #021827 0%,
+      #043347 55%,
+      #075267 100%
+    ) !important;
+}
+
+
+/* =========================================
+   3 — LAVENDER NIGHT
+   purple night + moon glow
+========================================= */
+
+html[data-theme="lavender"] body,
+html[data-theme="lavender"] #root {
+  background:
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(245, 214, 255, 0.14),
+      transparent 16%
+    ),
+
+    radial-gradient(
+      ellipse at 30% 10%,
+      rgba(155, 110, 235, 0.15),
+      transparent 32%
+    ),
+
+    radial-gradient(
+      ellipse at 75% 70%,
+      rgba(212, 119, 218, 0.10),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      145deg,
+      #17113b 0%,
+      #28205b 52%,
+      #403078 100%
+    ) !important;
+}
+
+
+/* =========================================
+   4 — TEAL MIST
+   soft forest mood + mist
+========================================= */
+
+html[data-theme="teal"] body,
+html[data-theme="teal"] #root {
+  background:
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(112, 215, 180, 0.14),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(70, 180, 155, 0.12),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      145deg,
+      #03272d 0%,
+      #06434c 55%,
+      #0d6263 100%
+    ) !important;
+}
+
+
+/* =========================================
+   5 — MIDNIGHT SKY
+   deep navy + warm stars
+========================================= */
+
+html[data-theme="midnight"] body,
+html[data-theme="midnight"] #root {
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(233, 189, 102, 0.10),
+      transparent 16%
+    ),
+
+    radial-gradient(
+      ellipse at 25% 8%,
+      rgba(61, 96, 168, 0.14),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      145deg,
+      #030918 0%,
+      #07162f 55%,
+      #10284e 100%
+    ) !important;
+}
+
+
+/* =========================================
+   6 — CELESTIAL DREAM
+   soft sky + clouds
+========================================= */
+
+html[data-theme="celestial"] body,
+html[data-theme="celestial"] #root {
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(255,255,255,0.60),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(255,255,255,0.50),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      145deg,
+      #6f9fe4 0%,
+      #9fc1ef 55%,
+      #d6e8ff 100%
+    ) !important;
+}
+
+
+/* ==================================================
+   STEP 30B — DECORATIVE STAR / MIST LAYERS
+================================================== */
+
+
+/* AURORA STARS */
+html[data-theme="aurora"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(90,235,220,0.5) 1px, transparent 1.4px);
+
+  background-size:
+    110px 110px,
+    180px 180px;
+
+  background-position:
+    10px 20px,
+    60px 90px;
+
+  opacity: 0.22;
+}
+
+
+/* OCEAN BUBBLE FEEL */
+html[data-theme="ocean"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(circle at 20% 70%, rgba(120,240,235,0.08) 0 3px, transparent 4px),
+    radial-gradient(circle at 75% 35%, rgba(120,240,235,0.07) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 80%, rgba(120,240,235,0.06) 0 4px, transparent 5px);
+
+  background-size:
+    180px 180px,
+    220px 220px,
+    260px 260px;
+
+  opacity: 0.75;
+}
+
+
+/* LAVENDER STARS */
+html[data-theme="lavender"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background-image:
+    radial-gradient(circle, rgba(255,235,255,0.55) 1px, transparent 1.5px);
+
+  background-size: 130px 130px;
+
+  opacity: 0.20;
+}
+
+
+/* TEAL MIST */
+html[data-theme="teal"] body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 35, 38, 0.30),
+      rgba(18, 90, 83, 0.10),
+      transparent
+    );
+}
+
+
+/* MIDNIGHT STARS */
+html[data-theme="midnight"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.65) 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(233,189,102,0.55) 1px, transparent 1.5px);
+
+  background-size:
+    105px 105px,
+    175px 175px;
+
+  background-position:
+    20px 25px,
+    75px 120px;
+
+  opacity: 0.24;
+}
+
+
+/* CELESTIAL CLOUD GLOW */
+html[data-theme="celestial"] body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 260px;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 100%,
+      rgba(255,255,255,0.72),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(255,255,255,0.62),
+      transparent 40%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 100%,
+      rgba(255,255,255,0.72),
+      transparent 38%
+    );
+
+  filter: blur(14px);
+}
+
+/* ==================================================
+   STEP 31 — REAL ENVELOPE ART
+================================================== */
+
+.overview-envelope {
+  width: 120px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 !important;
+
+  background: transparent !important;
+  border: none !important;
+}
+
+.overview-envelope img {
+  width: 115px;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 8px 12px
+      rgba(0, 0, 0, 0.22)
+    );
+}
+
+/* ==================================================
+   STEP 32 — THEME ENVELOPE GLOW
+================================================== */
+
+html[data-theme="aurora"] .overview-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(89, 239, 220, 0.40))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.22));
+}
+
+html[data-theme="ocean"] .overview-envelope img {
+  filter:
+    drop-shadow(0 0 13px rgba(73, 216, 218, 0.35))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.24));
+}
+
+html[data-theme="lavender"] .overview-envelope img {
+  filter:
+    drop-shadow(0 0 14px rgba(222, 154, 225, 0.42))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.22));
+}
+
+html[data-theme="teal"] .overview-envelope img {
+  filter:
+    drop-shadow(0 0 13px rgba(119, 210, 182, 0.38))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.24));
+}
+
+html[data-theme="midnight"] .overview-envelope img {
+  filter:
+    drop-shadow(0 0 14px rgba(233, 189, 102, 0.36))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.28));
+}
+
+html[data-theme="celestial"] .overview-envelope img {
+  filter:
+    drop-shadow(0 0 14px rgba(255,255,255,0.75))
+    drop-shadow(0 8px 12px rgba(65,100,160,0.20));
+}
+
+/* ==================================================
+   STEP 33 — COMMUNITY HERO
+================================================== */
+
+.community-page > h1,
+.community-page > h2,
+.community-container > h1,
+.community-container > h2 {
+  position: relative;
+
+  padding: 22px 20px;
+
+  margin-bottom: 22px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      color-mix(
+        in srgb,
+        var(--sh-accent) 12%,
+        transparent
+      ),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 9px 24px var(--sh-shadow);
+}
+
+.thought-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.thought-box::before {
+  content: "♡";
+
+  position: absolute;
+  right: 20px;
+  top: 10px;
+
+  font-size: 75px;
+
+  color:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 9%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+.thought-box > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==================================================
+   STEP 34 — LETTER CARD ENVELOPE FEEL
+================================================== */
+
+.letter-card,
+.letter-item,
+.inbox-letter,
+.sent-letter {
+  position: relative;
+  overflow: hidden;
+
+  padding: 20px !important;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      color-mix(
+        in srgb,
+        var(--sh-accent) 10%,
+        transparent
+      ),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+}
+
+.letter-card::after,
+.letter-item::after {
+  content: "💌";
+
+  position: absolute;
+
+  right: 20px;
+  bottom: 10px;
+
+  font-size: 44px;
+
+  opacity: 0.10;
+
+  pointer-events: none;
+}
+
+/* ==================================================
+   STEP 35 — CLOSED ENVELOPE ON LETTER CARDS
+================================================== */
+
+.letter-card-envelope {
+  width: 88px;
+  min-width: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-card-envelope img {
+  width: 82px;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 7px 10px rgba(0,0,0,0.18));
+}
+
+.letter-card:hover .letter-card-envelope img {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.letter-card-envelope img {
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+/* ==================================================
+   STEP 36 — OPEN LETTER ART
+================================================== */
+
+.open-letter-envelope {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 18px;
+}
+
+.open-letter-envelope img {
+  width: 150px;
+  max-width: 45%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 10px 16px rgba(0,0,0,0.22));
+}
+
+/* ==================================================
+   STEP 37 — THEMED LETTER GLOW
+================================================== */
+
+html[data-theme="aurora"] .letter-card-envelope img,
+html[data-theme="aurora"] .open-letter-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(99, 231, 220, 0.35))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.18));
+}
+
+html[data-theme="ocean"] .letter-card-envelope img,
+html[data-theme="ocean"] .open-letter-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(80, 210, 214, 0.30))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.20));
+}
+
+html[data-theme="lavender"] .letter-card-envelope img,
+html[data-theme="lavender"] .open-letter-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(220, 154, 223, 0.35))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.18));
+}
+
+html[data-theme="teal"] .letter-card-envelope img,
+html[data-theme="teal"] .open-letter-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(119, 210, 182, 0.32))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.20));
+}
+
+html[data-theme="midnight"] .letter-card-envelope img,
+html[data-theme="midnight"] .open-letter-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(233, 189, 102, 0.28))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.22));
+}
+
+html[data-theme="celestial"] .letter-card-envelope img,
+html[data-theme="celestial"] .open-letter-envelope img {
+  filter:
+    drop-shadow(0 0 12px rgba(255,255,255,0.70))
+    drop-shadow(0 8px 12px rgba(75,105,160,0.18));
+}
+
+/* ==================================================
+   STEP 38 — MINI THEME PREVIEW CARDS
+================================================== */
+
+.theme-picker-menu > button {
+  min-height: 60px;
+}
+
+.theme-dot {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  border-radius: 12px;
+
+  border:
+    1px solid rgba(255,255,255,0.24);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-dot::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.28),
+      transparent 45%
+    );
+
+  pointer-events: none;
+}
+
+.aurora-dot {
+  background:
+    radial-gradient(circle at 30% 30%, #61e0d0, transparent 35%),
+    linear-gradient(135deg, #0b2b5c, #7757c9);
+}
+
+.ocean-dot {
+  background:
+    radial-gradient(circle at 70% 25%, #58d7d0, transparent 35%),
+    linear-gradient(135deg, #05293b, #087187);
+}
+
+.lavender-dot {
+  background:
+    radial-gradient(circle at 70% 25%, #df9cdb, transparent 35%),
+    linear-gradient(135deg, #271e5a, #5a418e);
+}
+
+.teal-dot {
+  background:
+    radial-gradient(circle at 35% 30%, #77d2b5, transparent 35%),
+    linear-gradient(135deg, #063c42, #14756f);
+}
+
+.midnight-dot {
+  background:
+    radial-gradient(circle at 75% 20%, #e8bd67, transparent 25%),
+    linear-gradient(135deg, #050c20, #173661);
+}
+
+.celestial-dot {
+  background:
+    radial-gradient(circle at 30% 25%, #ffffff, transparent 35%),
+    linear-gradient(135deg, #8fbaf0, #d8eaff);
+}
+
+/* ==================================================
+   STEP 39 — READ / UNREAD LETTER STATES
+================================================== */
+
+.letter-card {
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+/* default / unread feel */
+.letter-card {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 55%,
+      var(--sh-border)
+    ) !important;
+}
+
+/* hover */
+.letter-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px
+      color-mix(in srgb, var(--sh-accent) 10%, transparent),
+    0 10px 24px var(--sh-shadow) !important;
+}
+
+/* opened state */
+.letter-paper.opened {
+  opacity: 1;
+}
+
+/* closed state slightly calmer */
+.letter-paper.closed {
+  opacity: 0.92;
+}
+
+/* ==================================================
+   STEP 40 — OPEN LETTER PAPER LOOK
+================================================== */
+
+.opened-letter {
+  margin-top: 18px;
+}
+
+.letter-open-stage {
+  position: relative;
+
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel-2),
+      var(--sh-card)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 12px 28px var(--sh-shadow);
+}
+
+.letter-message-overlay {
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-card) 88%,
+      transparent
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--sh-border) 80%,
+      var(--sh-accent)
+    ) !important;
+
+  border-radius: 14px !important;
+
+  padding: 18px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* ==================================================
+   STEP 41 — REPLY AREA
+================================================== */
+
+.reply-box,
+.reply-form,
+.letter-reply-box {
+  margin-top: 18px;
+
+  padding: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 20px var(--sh-shadow);
+}
+
+.reply-box textarea,
+.reply-form textarea,
+.letter-reply-box textarea {
+  width: 100%;
+
+  min-height: 110px;
+
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  padding: 12px !important;
+}
+
+.reply-box textarea:focus,
+.reply-form textarea:focus,
+.letter-reply-box textarea:focus {
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(in srgb, var(--sh-accent) 14%, transparent) !important;
+}
+
+.reply-box button,
+.reply-form button,
+.letter-reply-box button {
+  margin-top: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-accent) !important;
+  border-radius: 10px !important;
+}
+
+/* ==================================================
+   STEP 42 — LETTER ACCENT
+================================================== */
+
+.letter-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 110px;
+  height: 110px;
+
+  right: -45px;
+  top: -45px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 10%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+.letter-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==================================================
+   STEP 43 — NEW LETTER BADGE
+================================================== */
+
+.letter-new-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3px 8px;
+
+  margin-left: 8px;
+
+  border-radius: 999px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 30%,
+      var(--sh-card)
+    );
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-accent);
+
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+}
+
+/* ==================================================
+   STEP 44 — LETTER TOP ROW
+================================================== */
+
+.letter-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 12px;
+}
+
+.letter-top > span:first-child {
+  color: var(--sh-text) !important;
+  font-weight: 800;
+}
+
+.letter-date {
+  margin-left: auto;
+
+  color: var(--sh-muted) !important;
+
+  font-size: 0.78rem;
+}
+
+@media (max-width: 600px) {
+  .letter-date {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ==================================================
+   STEP 45 — LETTER ACTION BUTTONS
+================================================== */
+
+.letter-card button,
+.opened-letter button {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 10px !important;
+
+  padding: 8px 12px !important;
+
+  font-weight: 700;
+}
+
+.letter-card button:hover,
+.opened-letter button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+
+  transform: translateY(-1px);
+}
+
+/* ==================================================
+   STEP 46 — EMPTY LETTER STATE
+================================================== */
+
+.letters-empty-state {
+  text-align: center;
+
+  padding: 36px 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow);
+}
+
+.letters-empty-icon {
+  font-size: 48px;
+
+  margin-bottom: 10px;
+}
+
+.letters-empty-state h3 {
+  color: var(--sh-text) !important;
+  margin-bottom: 6px;
+}
+
+.letters-empty-state p {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 47 — COMMUNITY SECTION HEADER
+================================================== */
+
+.community-header,
+.community-title-section {
+  position: relative;
+
+  padding: 24px 22px;
+
+  margin-bottom: 22px;
+
+  background:
+    radial-gradient(
+      circle at 88% 20%,
+      color-mix(in srgb, var(--sh-accent) 14%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 24px var(--sh-shadow);
+}
+
+.community-header h1,
+.community-header h2,
+.community-title-section h1,
+.community-title-section h2 {
+  color: var(--sh-text) !important;
+  margin-bottom: 6px;
+}
+
+.community-header p,
+.community-title-section p {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 48 — COMMUNITY COMPOSER
+================================================== */
+
+.thought-box {
+  position: relative;
+  overflow: hidden;
+
+  padding: 20px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 10px 26px var(--sh-shadow) !important;
+}
+
+.thought-box::after {
+  content: "♡";
+
+  position: absolute;
+  right: 18px;
+  top: 8px;
+
+  font-size: 82px;
+
+  color:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 9%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+.thought-box > * {
+  position: relative;
+  z-index: 2;
+}
+
+.thought-box textarea {
+  min-height: 135px;
+
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 14px !important;
+
+  padding: 14px !important;
+}
+
+.thought-box textarea:focus {
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(in srgb, var(--sh-accent) 14%, transparent) !important;
+}
+
+/* ==================================================
+   STEP 49 — COMMUNITY POST CARDS
+================================================== */
+
+.post-card {
+  position: relative;
+  overflow: hidden;
+
+  padding: 18px !important;
+
+  background:
+    radial-gradient(
+      circle at 92% 10%,
+      color-mix(in srgb, var(--sh-accent) 8%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 16px
+      color-mix(in srgb, var(--sh-accent) 10%, transparent),
+    0 10px 24px var(--sh-shadow) !important;
+}
+
+.post-card strong,
+.post-card p {
+  color: var(--sh-text) !important;
+}
+
+.post-date {
+  color: var(--sh-muted) !important;
+}
+
+.post-card button {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 9px !important;
+
+  padding: 7px 10px !important;
+
+  font-weight: 700;
+}
+
+.post-card button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+/* ==================================================
+   STEP 50 — COMMUNITY EMPTY STATE
+================================================== */
+
+.community-empty,
+.posts-empty,
+.empty-community {
+  text-align: center;
+
+  padding: 34px 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    );
+
+  border: 1px solid var(--sh-border);
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow);
+}
+
+.community-empty h3,
+.posts-empty h3,
+.empty-community h3 {
+  color: var(--sh-text) !important;
+}
+
+.community-empty p,
+.posts-empty p,
+.empty-community p {
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 51 — NAVBAR POLISH
+================================================== */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  padding: 12px 18px !important;
+
+  border-radius: 0 0 16px 16px !important;
+
+  backdrop-filter: blur(16px);
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header button,
+.theme-picker-button {
+  min-height: 38px;
+
+  padding: 7px 11px !important;
+
+  border-radius: 10px !important;
+
+  font-weight: 800;
+}
+
+header button:hover,
+.theme-picker-button:hover {
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 12px
+    color-mix(in srgb, var(--sh-accent) 10%, transparent) !important;
+}
+
+
+/* ==================================================
+   STEP 52 — PROFILE / USERNAME AREA
+================================================== */
+
+.profile-page,
+.profile-container,
+.profile-card {
+  color: var(--sh-text) !important;
+}
+
+.profile-card,
+.profile-section,
+.profile-info {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 10px 26px var(--sh-shadow) !important;
+}
+
+.profile-card h1,
+.profile-card h2,
+.profile-card h3,
+.profile-section h2 {
+  color: var(--sh-text) !important;
+}
+
+.profile-card p,
+.profile-section p,
+.profile-meta {
+  color: var(--sh-muted) !important;
+}
+
+.profile-card input,
+.profile-card textarea {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+}
+
+.profile-card button {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+}
+
+.profile-card button:hover {
+  background: var(--sh-card-hover) !important;
+  border-color: var(--sh-accent) !important;
+}
+
+
+/* ==================================================
+   STEP 53 — WARNINGS PAGE
+================================================== */
+
+.warnings-page,
+.warnings-container {
+  color: var(--sh-text) !important;
+}
+
+.warning-card,
+.warnings-card {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+.warning-card h3,
+.warnings-card h3 {
+  color: var(--sh-text) !important;
+}
+
+.warning-card p,
+.warning-card span,
+.warnings-card p,
+.warnings-card span {
+  color: var(--sh-muted) !important;
+}
+
+
+/* make warning accents visible */
+.warning-card {
+  border-left:
+    4px solid
+    color-mix(
+      in srgb,
+      #e3a84f 70%,
+      var(--sh-accent)
+    ) !important;
+}
+
+
+/* ==================================================
+   STEP 54 — THEME PICKER FINISHING TOUCHES
+================================================== */
+
+.theme-picker-menu {
+  overflow: hidden;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.32),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.theme-picker-menu > button {
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.theme-picker-menu > button:hover {
+  transform: translateX(2px);
+}
+
+.theme-picker-menu > button.selected-theme {
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--sh-accent) 14%, var(--sh-card)),
+      var(--sh-panel-2)
+    ) !important;
+
+  border-color: var(--sh-accent) !important;
+}
+
+.theme-picker-menu > button.selected-theme::after {
+  content: "✓";
+
+  position: absolute;
+  right: 12px;
+
+  color: var(--sh-accent);
+
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+
+/* current theme button gets subtle glow */
+.theme-picker-button {
+  box-shadow:
+    0 0 0 1px
+    color-mix(in srgb, var(--sh-accent) 12%, transparent);
+}
+
+.theme-picker-button:hover {
+  box-shadow:
+    0 0 14px
+    color-mix(in srgb, var(--sh-accent) 16%, transparent) !important;
+}
+
+/* ==================================================
+   STEP 55 — ADMIN MODERATION CARDS
+================================================== */
+
+.admin-section {
+  position: relative;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  padding: 20px;
+
+  box-shadow:
+    0 10px 28px var(--sh-shadow);
+}
+
+.admin-section > h2,
+.admin-section > h3 {
+  color: var(--sh-text) !important;
+}
+
+.admin-section p {
+  color: var(--sh-muted);
+}
+
+
+/* individual moderation items */
+
+.moderation-card,
+.report-card,
+.letter-report-card,
+.pending-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 92% 8%,
+      color-mix(
+        in srgb,
+        var(--sh-accent) 8%,
+        transparent
+      ),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.moderation-card:hover,
+.report-card:hover,
+.letter-report-card:hover,
+.pending-card:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 16px
+      color-mix(
+        in srgb,
+        var(--sh-accent) 9%,
+        transparent
+      ),
+    0 10px 25px var(--sh-shadow);
+}
+
+/* ==================================================
+   STEP 56 — ADMIN ACTION BUTTONS
+================================================== */
+
+.approve-button,
+.reject-button,
+.delete-button,
+.warn-button,
+.suspend-button,
+.ban-button {
+  border-radius: 10px !important;
+
+  padding: 8px 12px !important;
+
+  font-weight: 800 !important;
+
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+/* APPROVE */
+
+.approve-button {
+  background: rgba(72, 180, 135, 0.18) !important;
+  border: 1px solid rgba(95, 215, 165, 0.45) !important;
+  color: #a9efd0 !important;
+}
+
+
+/* REJECT */
+
+.reject-button {
+  background: rgba(210, 80, 100, 0.16) !important;
+  border: 1px solid rgba(235, 110, 125, 0.40) !important;
+  color: #ffc0ca !important;
+}
+
+
+/* DELETE */
+
+.delete-button {
+  background: rgba(190, 85, 90, 0.14) !important;
+  border: 1px solid rgba(220, 110, 115, 0.35) !important;
+  color: #f3b9bc !important;
+}
+
+
+/* WARNING */
+
+.warn-button {
+  background: rgba(220, 165, 70, 0.17) !important;
+  border: 1px solid rgba(240, 190, 90, 0.42) !important;
+  color: #ffe0a3 !important;
+}
+
+
+/* SUSPEND */
+
+.suspend-button {
+  background: rgba(105, 130, 195, 0.18) !important;
+  border: 1px solid rgba(135, 160, 225, 0.40) !important;
+  color: #c8d4ff !important;
+}
+
+
+/* BAN */
+
+.ban-button {
+  background: rgba(175, 75, 85, 0.20) !important;
+  border: 1px solid rgba(220, 105, 115, 0.42) !important;
+  color: #ffc2c7 !important;
+}
+
+
+.approve-button:hover,
+.reject-button:hover,
+.delete-button:hover,
+.warn-button:hover,
+.suspend-button:hover,
+.ban-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.12);
+}
+
+/* ==================================================
+   STEP 57 — ADMIN STATUS CHIPS
+================================================== */
+
+.status-chip,
+.report-status,
+.moderation-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 12%,
+      var(--sh-card)
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--sh-accent) 35%,
+      var(--sh-border)
+    );
+
+  color: var(--sh-text);
+}
+
+/* ==================================================
+   STEP 58 — ADMIN HISTORY
+================================================== */
+
+.history-card,
+.history-item,
+.admin-history-item {
+  position: relative;
+
+  padding: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  border-left:
+    3px solid
+    var(--sh-accent) !important;
+
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 7px 18px var(--sh-shadow);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.history-card:hover,
+.history-item:hover,
+.admin-history-item:hover {
+  transform: translateX(3px);
+}
+
+.history-card strong,
+.history-item strong,
+.admin-history-item strong {
+  color: var(--sh-text) !important;
+}
+
+.history-card p,
+.history-card span,
+.history-item p,
+.history-item span,
+.admin-history-item p,
+.admin-history-item span {
+  color: var(--sh-muted);
+}
+
+/* ==================================================
+   STEP 59 — REAL ADMIN POST / REPORT CARDS
+================================================== */
+
+.admin-post,
+.admin-post.report-card {
+  background:
+    radial-gradient(
+      circle at 92% 10%,
+      color-mix(in srgb, var(--sh-accent) 8%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.admin-post:hover,
+.admin-post.report-card:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 16px
+      color-mix(in srgb, var(--sh-accent) 10%, transparent),
+    0 10px 24px var(--sh-shadow) !important;
+}
+
+.admin-post-content {
+  color: var(--sh-text) !important;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-panel) 72%,
+      transparent
+    ) !important;
+
+  border: 1px solid var(--sh-border);
+  border-radius: 12px;
+
+  padding: 13px !important;
+}
+
+.reported-post-box {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 12px !important;
+
+  color: var(--sh-text) !important;
+
+  padding: 13px !important;
+}
+
+.reported-post-box p,
+.reported-post-box span {
+  color: var(--sh-muted) !important;
+}
+
+.reported-post-box strong {
+  color: var(--sh-text) !important;
+}
+
+/* ==================================================
+   STEP 60 — REAL ADMIN USER CARDS
+================================================== */
+
+.admin-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-user-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 94% 12%,
+      color-mix(in srgb, var(--sh-accent) 8%, transparent),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  color: var(--sh-text) !important;
+
+  box-shadow:
+    0 8px 20px var(--sh-shadow) !important;
+}
+
+.admin-user-card:hover {
+  border-color: var(--sh-accent) !important;
+}
+
+.admin-user-info {
+  color: var(--sh-text) !important;
+}
+
+.admin-user-id {
+  color: var(--sh-muted) !important;
+}
+
+.admin-user-name-button {
+  color: var(--sh-text) !important;
+
+  background: transparent !important;
+
+  border: none !important;
+
+  font-weight: 900 !important;
+}
+
+.admin-user-name-button:hover {
+  color: var(--sh-accent) !important;
+
+  text-decoration: none !important;
+
+  transform: none !important;
+}
+
+.warning-limit-text {
+  color: #f0c77d !important;
+  font-weight: 800;
+}
+
+/* ==================================================
+   STEP 61 — REAL MODERATION HISTORY
+================================================== */
+
+.moderation-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moderation-history-card {
+  position: relative;
+
+  padding: 16px !important;
+
+  background:
+    radial-gradient(
+      circle at 95% 10%,
+      color-mix(in srgb, var(--sh-accent) 7%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  border-left:
+    4px solid var(--sh-accent) !important;
+
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 7px 18px var(--sh-shadow) !important;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.moderation-history-card:hover {
+  transform: translateX(3px);
+
+  border-color: var(--sh-accent) !important;
+}
+
+.moderation-history-top,
+.moderation-history-info {
+  color: var(--sh-text) !important;
+}
+
+.moderation-history-description {
+  color: var(--sh-text) !important;
+}
+
+.moderation-history-date,
+.moderation-history-userid {
+  color: var(--sh-muted) !important;
+}
+
+.moderation-history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+/* ==================================================
+   STEP 62 — REAL COMMUNITY CLASSES
+================================================== */
+
+.community {
+  color: var(--sh-text) !important;
+}
+
+.community-header {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      color-mix(in srgb, var(--sh-accent) 13%, transparent),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 9px 24px var(--sh-shadow) !important;
+}
+
+.posts-section {
+  color: var(--sh-text) !important;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.anonymous-user {
+  color: var(--sh-text) !important;
+  font-weight: 900;
+}
+
+.post-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.post-actions button {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+}
+
+.post-actions button:hover {
+  background: var(--sh-card-hover) !important;
+
+  border-color: var(--sh-accent) !important;
+}
+
+/* ==================================================
+   STEP 63 — REAL MY LETTERS CLASSES
+================================================== */
+
+.letters-page {
+  color: var(--sh-text) !important;
+}
+
+.letters-header {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      color-mix(in srgb, var(--sh-accent) 12%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 10px 26px var(--sh-shadow) !important;
+}
+
+.letters-header h1,
+.letters-header h2,
+.letters-header h3 {
+  color: var(--sh-text) !important;
+}
+
+.letters-header p {
+  color: var(--sh-muted) !important;
+}
+
+.letters-icon {
+  color: var(--sh-accent) !important;
+}
+
+.letters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ==================================================
+   STEP 64 — REAL LETTER / REPLY CARDS
+================================================== */
+
+.letter-card,
+.letter-card.reply-card {
+  background:
+    radial-gradient(
+      circle at 92% 10%,
+      color-mix(in srgb, var(--sh-accent) 8%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 8px 22px var(--sh-shadow) !important;
+}
+
+.reply-message-box {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-card)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 13px !important;
+
+  padding: 14px !important;
+}
+
+.reply-quote {
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 8%,
+      var(--sh-panel)
+    ) !important;
+
+  border-left:
+    3px solid var(--sh-accent) !important;
+
+  color: var(--sh-muted) !important;
+
+  border-radius: 8px !important;
+}
+
+.letter-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+
+  color: var(--sh-muted) !important;
+}
+
+/* ==================================================
+   STEP 65 — REAL OPEN / CLOSED LETTER STYLING
+================================================== */
+
+.opened-letter,
+.closed-letter {
+  color: var(--sh-text) !important;
+}
+
+.letter-open-stage {
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      color-mix(in srgb, var(--sh-accent) 7%, transparent),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 10px 28px var(--sh-shadow) !important;
+}
+
+.letter-envelope-image,
+.open-envelope-image {
+  filter:
+    drop-shadow(
+      0 8px 12px rgba(0,0,0,0.20)
+    );
+}
+
+.letter-message-overlay {
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-card) 90%,
+      transparent
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+
+  box-shadow:
+    0 8px 20px var(--sh-shadow) !important;
+}
+
+.letter-message-overlay.preview {
+  opacity: 0.88;
+}
+
+.letter-message-overlay.expanded {
+  opacity: 1;
+}
+
+.letter-hint {
+  color: var(--sh-muted) !important;
+
+  font-size: 0.78rem;
+}
+
+/* ==================================================
+   STEP 66 — REAL SUARA HATI MODALS
+================================================== */
+
+.modal-overlay {
+  background:
+    rgba(3, 8, 22, 0.66) !important;
+
+  backdrop-filter: blur(8px);
+
+  z-index: 9999;
+}
+
+.report-modal {
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      color-mix(in srgb, var(--sh-accent) 10%, transparent),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sh-panel),
+      var(--sh-panel-2)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.38) !important;
+}
+
+.report-modal h1,
+.report-modal h2,
+.report-modal h3,
+.report-modal strong {
+  color: var(--sh-text) !important;
+}
+
+.report-modal p,
+.report-modal span,
+.report-modal small,
+.report-modal label {
+  color: var(--sh-muted) !important;
+}
+
+.report-modal input,
+.report-modal textarea,
+.report-modal select {
+  background: var(--sh-card) !important;
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 11px !important;
+}
+
+.report-modal input:focus,
+.report-modal textarea:focus,
+.report-modal select:focus {
+  border-color: var(--sh-accent) !important;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--sh-accent) 13%,
+      transparent
+    ) !important;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 16px;
+}
+
+.modal-actions button {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-card),
+      var(--sh-panel)
+    ) !important;
+
+  color: var(--sh-text) !important;
+
+  border: 1px solid var(--sh-border) !important;
+  border-radius: 10px !important;
+}
+
+.modal-actions button:hover {
+  background: var(--sh-card-hover) !important;
+
+  border-color: var(--sh-accent) !important;
+}
+
+.report-submit-button {
+  background:
+    linear-gradient(
+      145deg,
+      var(--sh-accent-2),
+      var(--sh-card-hover)
+    ) !important;
+
+  border-color: var(--sh-accent) !important;
+
+  color: var(--sh-text) !important;
+
+  font-weight: 800 !important;
+}
+
+/* ==================================================
+   STEP 67 — SUARA HATI BRAND AREA
+================================================== */
+
+header .logo,
+header .brand,
+header h1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--sh-text) !important;
+
+  font-weight: 900;
+  letter-spacing: 0.4px;
+}
+
+header .logo::before,
+header .brand::before {
+  content: "🌙";
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 12%,
+      var(--sh-card)
+    );
+
+  border: 1px solid var(--sh-border);
+}
+
+/* ==================================================
+   STEP 68 — SOFT DIVIDERS
+================================================== */
+
+hr,
+.section-divider,
+.card-divider {
+  border: none !important;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      color-mix(
+        in srgb,
+        var(--sh-border) 70%,
+        transparent
+      ),
+      transparent
+    ) !important;
+
+  margin: 14px 0;
+}
+
+/* ==================================================
+   STEP 69 — THEME ACCENT SYMBOLS
+================================================== */
+
+html[data-theme="aurora"] .overview-hero::after {
+  content: "✦";
+}
+
+html[data-theme="ocean"] .overview-hero::after {
+  content: "◌";
+}
+
+html[data-theme="lavender"] .overview-hero::after {
+  content: "☾";
+}
+
+html[data-theme="teal"] .overview-hero::after {
+  content: "❦";
+}
+
+html[data-theme="midnight"] .overview-hero::after {
+  content: "✧";
+}
+
+html[data-theme="celestial"] .overview-hero::after {
+  content: "☁";
+}
+
+.overview-hero::after {
+  position: absolute;
+
+  right: 32px;
+  top: 18px;
+
+  font-size: 88px;
+
+  color:
+    color-mix(
+      in srgb,
+      var(--sh-accent) 13%,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+/* ==================================================
+   STEP 70 — CELESTIAL DREAM CONTRAST FIX
+================================================== */
+
+html[data-theme="celestial"] {
+  --sh-panel: rgba(220, 235, 252, 0.95);
+  --sh-panel-2: rgba(205, 225, 248, 0.95);
+
+  --sh-card: rgba(226, 239, 255, 0.96);
+  --sh-card-hover: #f3f8ff;
+
+  --sh-border: #6f91bb;
+
+  --sh-text: #1d3557;
+  --sh-muted: #536d8d;
+
+  --sh-accent: #4f80c8;
+  --sh-accent-2: #8fb4e8;
+}
+
+html[data-theme="celestial"] body,
+html[data-theme="celestial"] #root {
+  background:
+    radial-gradient(
+      ellipse at 18% 15%,
+      rgba(255,255,255,0.55),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 25%,
+      rgba(255,255,255,0.45),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      145deg,
+      #7ea9df 0%,
+      #9fc1eb 55%,
+      #bfd6f1 100%
+    ) !important;
+}
+
+html[data-theme="celestial"] .admin-section,
+html[data-theme="celestial"] .post-card,
+html[data-theme="celestial"] .letter-card,
+html[data-theme="celestial"] .report-modal,
+html[data-theme="celestial"] .admin-user-card {
+  box-shadow:
+    0 10px 24px rgba(55, 85, 125, 0.18) !important;
+}
+
+/* ==================================================
+   STEP 70 — CELESTIAL DREAM CONTRAST FIX
+================================================== */
+
+html[data-theme="celestial"] {
+  --sh-panel: rgba(220, 235, 252, 0.95);
+  --sh-panel-2: rgba(205, 225, 248, 0.95);
+
+  --sh-card: rgba(226, 239, 255, 0.96);
+  --sh-card-hover: #f3f8ff;
+
+  --sh-border: #6f91bb;
+
+  --sh-text: #1d3557;
+  --sh-muted: #536d8d;
+
+  --sh-accent: #4f80c8;
+  --sh-accent-2: #8fb4e8;
+}
+
+html[data-theme="celestial"] body,
+html[data-theme="celestial"] #root {
+  background:
+    radial-gradient(
+      ellipse at 18% 15%,
+      rgba(255,255,255,0.55),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      ellipse at 85% 25%,
+      rgba(255,255,255,0.45),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      145deg,
+      #7ea9df 0%,
+      #9fc1eb 55%,
+      #bfd6f1 100%
+    ) !important;
+}
+
+html[data-theme="celestial"] .admin-section,
+html[data-theme="celestial"] .post-card,
+html[data-theme="celestial"] .letter-card,
+html[data-theme="celestial"] .report-modal,
+html[data-theme="celestial"] .admin-user-card {
+  box-shadow:
+    0 10px 24px rgba(55, 85, 125, 0.18) !important;
+}
+
+/* ==================================================
+   STEP 72 — SOFT PREMIUM HOVERS
+================================================== */
+
+.post-card,
+.letter-card,
+.admin-user-card,
+.admin-post,
+.moderation-history-card,
+.overview-card {
+  transition:
+    transform 0.20s ease,
+    border-color 0.20s ease,
+    box-shadow 0.20s ease,
+    background 0.20s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  .post-card:hover,
+  .letter-card:hover,
+  .admin-user-card:hover,
+  .admin-post:hover,
+  .overview-card:hover {
+    transform: translateY(-3px);
+
+    border-color:
+      color-mix(
+        in srgb,
+        var(--sh-accent) 75%,
+        var(--sh-border)
+      ) !important;
+
+    box-shadow:
+      0 0 20px
+        color-mix(
+          in srgb,
+          var(--sh-accent) 10%,
+          transparent
+        ),
+
+      0 12px 28px
+        var(--sh-shadow) !important;
+  }
+
+  .moderation-history-card:hover {
+    transform: translateX(4px);
+  }
+}
+
+/* ==================================================
+   STEP 74 — SOFT PAGE ENTRANCE
+================================================== */
+
+.community,
+.letters-page,
+.admin-page,
+.admin-container {
+  animation: suaraHatiPageIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes suaraHatiPageIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.992);
+    filter: blur(3px);
+  }
+
+  45% {
+    opacity: 0.75;
+    filter: blur(1px);
+  }
+
+ 100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .community,
+  .letters-page,
+  .admin-page,
+  .admin-container {
+    animation: none !important;
+  }
+}
+
+/* ==================================================
+   SMOOTH PAGE SWITCH TRANSITION
+================================================== */
+
+.app {
+  transition:
+    opacity 0.34s ease,
+    transform 0.34s ease,
+    filter 0.34s ease;
+}
+
+.app.page-switching {
+  opacity: 0;
+  transform: translateY(8px) scale(0.995);
+  filter: blur(2px);
+}
+
+
+/* softer entrance for the new page */
+.community,
+.letters-page,
+.admin-page,
+.admin-container,
+.warnings-page {
+  animation:
+    suaraHatiPageIn
+    0.55s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes suaraHatiPageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .app,
+  .community,
+  .letters-page,
+  .admin-page,
+  .admin-container,
+  .warnings-page {
+    transition: none !important;
+    animation: none !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==================================================
+   FIX — THEME PICKER MUST STAY ABOVE PAGE CONTENT
+================================================== */
+
+.navbar,
+header {
+  position: relative !important;
+  z-index: 10000 !important;
+  overflow: visible !important;
+}
+
+.nav-buttons {
+  position: relative;
+  z-index: 10001;
+  overflow: visible !important;
+}
+
+.theme-picker {
+  position: relative !important;
+  z-index: 20000 !important;
+}
+
+.theme-picker-menu {
+  position: absolute !important;
+  z-index: 99999 !important;
+
+  pointer-events: auto !important;
+}
+
+.theme-picker-menu button {
+  position: relative;
+  z-index: 100000;
+
+  pointer-events: auto !important;
+}
+
+
+/* keep page sections UNDER the theme menu */
+
+.community,
+.community-header,
+.thought-box,
+.posts-section,
+.letters-page,
+.admin-page,
+.admin-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================================================
+   STEP 76 — NAVBAR LETTER NOTIFICATION
+================================================== */
+
+.nav-notification-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 20px;
+  height: 20px;
+
+  margin-left: 5px;
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: var(--sh-accent) !important;
+  color: var(--sh-bg-1) !important;
+
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--sh-accent) 80%,
+      white
+    );
+
+  box-shadow:
+    0 0 10px
+    color-mix(
+      in srgb,
+      var(--sh-accent) 20%,
+      transparent
+    );
+}

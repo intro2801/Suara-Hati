@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { auth, db } from "./firebase";
+import { auth, db } from "../src/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
 function Profile({ user, onComplete }) {
