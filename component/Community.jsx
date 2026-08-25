@@ -17,7 +17,7 @@ import { db } from "../src/firebase";
 import ReportModal from "../modals/ReportModal";
 import CareModal from "../modals/CareModal";
 
-function Community({ user, profile }) {
+function Community({ user, profile, themeMessage }) {
   const [thought, setThought] = useState("");
   const [posts, setPosts] = useState([]);
   const [blockedUsers, setBlockedUsers] = useState([]);
@@ -244,6 +244,10 @@ const handleBlock = async (post) => {
         <p>
           Share what's on your mind.
           Someone might understand.
+        </p>
+
+        <p className="theme-comfort-message">
+           {themeMessage}
         </p>
 
       </section>

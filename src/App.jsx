@@ -36,6 +36,15 @@ const [theme, setTheme] = useState(() => {
   return localStorage.getItem("suaraHatiTheme") || "aurora";
 });
 
+const themeWelcomeMessages = {
+  aurora: "A little light can still find you tonight. ✨",
+  ocean: "Take things slowly. You do not need to rush. 🌊",
+  lavender: "Stay awhile. This space is yours. 🌙",
+  teal: "You can rest here for a moment. 🌿",
+  midnight: "Even quiet nights eventually become morning. ⭐",
+  celestial: "A softer moment is waiting for you. ☁️"
+};
+
 const [themeMenuOpen, setThemeMenuOpen] = useState(false);
 
 useEffect(() => {
@@ -177,6 +186,42 @@ useEffect(() => {
   return () => unsubscribe();
 
 }, []);
+
+useEffect(() => {
+  if (!user) {
+    setUnreadLetterCount(0);
+    return;
+  }
+
+  const lettersQuery = query(
+    collection(db, "letters"),
+    where("receiverId", "==", user.uid),
+    where("status", "==", "approved")
+  );
+
+  const unsubscribe = onSnapshot(
+    lettersQuery,
+    (snapshot) => {
+      let readIds = [];
+
+      try {
+        readIds = JSON.parse(
+          localStorage.getItem("suaraHatiReadLetters") || "[]"
+        );
+      } catch {
+        readIds = [];
+      }
+
+      const unread = snapshot.docs.filter(
+        (letterDoc) => !readIds.includes(letterDoc.id)
+      ).length;
+
+      setUnreadLetterCount(unread);
+    }
+  );
+
+  return () => unsubscribe();
+}, [user]);
 
   if (loading) {
     return (
@@ -350,6 +395,8 @@ if (profile.status === "suspended") {
         <button
           className={`login-button ${
             currentPage === "letters" ? "nav-active" : ""
+          } ${
+            unreadLetterCount > 0 ? "nav-has-notifications" : ""
           }`}
           onClick={() =>
             changePage("letters")
@@ -495,6 +542,7 @@ if (profile.status === "suspended") {
        <Community
            user={user}
            profile={profile}
+           themeMessage={themeWelcomeMessages[theme]}
       />
     )}
 
@@ -502,6 +550,9 @@ if (profile.status === "suspended") {
        <Letters
           user={user}
           profile={profile}
+          onLetterRead={() => {
+            setUnreadLetterCount((count) => Math.max(0, count - 1));
+          }}
       />
     )}
 
@@ -513,44 +564,8 @@ if (profile.status === "suspended") {
   );
 }
 
-useEffect(() => {
-  if (!user) {
-    setUnreadLetterCount(0);
-    return;
-  }
-
-  const lettersQuery = query(
-    collection(db, "letters"),
-    where("receiverId", "==", user.uid),
-    where("status", "==", "approved")
-  );
-
-  const unsubscribe = onSnapshot(
-    lettersQuery,
-    (snapshot) => {
-      let readIds = [];
-
-      try {
-        readIds = JSON.parse(
-          localStorage.getItem("suaraHatiReadLetters") || "[]"
-        );
-      } catch {
-        readIds = [];
-      }
-
-      const unread = snapshot.docs.filter(
-        (letterDoc) => !readIds.includes(letterDoc.id)
-      ).length;
-
-      setUnreadLetterCount(unread);
-    }
-  );
-
-  return () => unsubscribe();
-}, [user]);
-
 return (
-  <div className={`app ${isPageSwitching ? "page-switching" : ""}`}>
+  <div className="app">
 
     <header className="navbar">
 
@@ -583,6 +598,135 @@ return (
           💌 My Letters
         </button>
 
+        <button
+          className="login-button"
+          onClick={() =>
+             changePage("warnings")
+          }
+       >
+         ⚠️ My Warnings
+        </button>
+
+        <div className="theme-picker">
+
+  <button
+    type="button"
+    className="theme-picker-button"
+    onClick={() => setThemeMenuOpen((open) => !open)}
+  >
+    🎨 Theme
+    <span className="theme-picker-arrow">▾</span>
+  </button>
+
+  {themeMenuOpen && (
+    <div className="theme-picker-menu">
+
+      <button
+        type="button"
+        className={theme === "aurora" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("aurora");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot aurora-dot" />
+
+        <span>
+          <strong>Aurora Blue</strong>
+          <small>Dreamy & magical</small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        className={theme === "ocean" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("ocean");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot ocean-dot" />
+
+        <span>
+          <strong>Ocean Depth</strong>
+          <small>Deep & peaceful</small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        className={theme === "lavender" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("lavender");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot lavender-dot" />
+
+        <span>
+          <strong>Lavender Night</strong>
+          <small>Soft & cozy</small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        className={theme === "teal" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("teal");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot teal-dot" />
+
+        <span>
+          <strong>Teal Mist</strong>
+          <small>Natural & calming</small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        className={theme === "midnight" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("midnight");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot midnight-dot" />
+
+        <span>
+          <strong>Midnight Sky</strong>
+          <small>Quiet & starry</small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        className={theme === "celestial" ? "selected-theme" : ""}
+        onClick={() => {
+          setTheme("celestial");
+          setThemeMenuOpen(false);
+        }}
+      >
+        <span className="theme-dot celestial-dot" />
+
+        <span>
+          <strong>Celestial Dream</strong>
+          <small>Light & dreamy</small>
+        </span>
+      </button>
+
+    </div>
+  )}
+
+</div>
+
         <span style={{ color: "#a8adbd" }}>
           @{profile.username}
         </span>
@@ -592,15 +736,6 @@ return (
           onClick={() => signOut(auth)}
         >
           Log Out
-        </button>
-
-        <button
-          className="login-button"
-          onClick={() =>
-             changePage("warnings")
-          }
-       >
-         ⚠️ My Warnings
         </button>
 
       </div>
